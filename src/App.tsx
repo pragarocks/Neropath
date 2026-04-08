@@ -820,7 +820,7 @@ function Evaluator({mid,mname,onScore}){
       const b=t.split("===EVALUATION START===")[1].split("===EVALUATION END===")[0];
       const sm=b.match(/SCORE:\s*(\d+)\/100/);if(!sm)return{err:"No SCORE: XX/100 found."};
       const sc=parseInt(sm[1]);
-      const hm=b.match(/HASH:\s*([\w-]+)/);if(!hm||hm[1]!==evalHash)return{err:`Hash mismatch. Expected ${evalHash}.`};
+      const hm=b.match(/HASH:\s*([\w.\-]+)/);if(!hm||hm[1]!==evalHash)return{err:`Hash mismatch. Expected ${evalHash}.`};
       const cats={};
       for(const c of["CORRECTNESS","CODE_QUALITY","COMPLETENESS","UNDERSTANDING"]){const m=b.match(new RegExp(`${c}:\\s*(\\d+)\\/\\d+\\s*-\\s*(.+)`));if(m)cats[c]={s:parseInt(m[1]),f:m[2].trim()};}
       const su=b.match(/SUMMARY:\s*(.+?)(?=\nSUGGESTION:|\n===)/s);
@@ -829,7 +829,7 @@ function Evaluator({mid,mname,onScore}){
     }catch(e){return{err:"Parse failed. Copy the full AI response."};}
   };
 
-  const submit=()=>{const r=parse(resp);setResult(r);if(r.ok)onScore(r.sc);};
+  const submit=()=>{const r=parse(resp);setResult(r);if(r.ok)onScore(r.sc);setMode("result");};
   const cp=()=>{navigator.clipboard.writeText(prompt);setCopied(true);setTimeout(()=>setCopied(false),2e3);};
 
   if(mode==="code")return(<div className="h-full flex flex-col">
