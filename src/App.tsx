@@ -354,10 +354,10 @@ function VisualLesson({moduleId, onComplete}){
         <div className="flex flex-col items-center gap-4">
           <div className="text-sm text-gray-400 text-center max-w-md mb-2">Imagine a ball rolling down a hill. <span className="text-purple-400 font-semibold">Gradient descent</span> follows the slope to find the lowest point.</div>
           <svg viewBox="0 0 400 200" className="w-full max-w-lg">
-            <defs><linearGradient id="gd" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.3"/><stop offset="50%" stopColor="#10B981" stopOpacity="0.3"/><stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.3"/></linearGradient></defs>
-            <path d={`M 20 ${20+f(-2)*4} ${Array.from({length:50},(_,i)=>{const x=-2+i*0.24;return`L ${20+i*7.4} ${20+f(x)*4}`;}).join(" ")}`} fill="url(#gd)" stroke="#8B5CF6" strokeWidth="2"/>
-            {trail.map((p,i)=>{const sx=20+((p+2)/12)*370;const sy=20+f(p)*4;return<circle key={i} cx={sx} cy={sy} r={i===trail.length-1?6:2} fill="#F59E0B" opacity={i===trail.length-1?1:0.4}/>;})}
-            <circle cx={20+((3+2)/12)*370} cy={20+f(3)*4} r={4} fill="#10B981" opacity="0.5"/><text x={20+((3+2)/12)*370} y={20+f(3)*4-10} fill="#10B981" fontSize="10" textAnchor="middle">min</text>
+            <defs><linearGradient id="gd" x1="0%" y1="100%" x2="100%" y2="100%"><stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.3"/><stop offset="50%" stopColor="#10B981" stopOpacity="0.3"/><stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.3"/></linearGradient></defs>
+            <path d={`M 20 ${190-f(-2)*3} ${Array.from({length:50},(_,i)=>{const x=-2+i*0.24;return`L ${20+i*7.4} ${190-f(x)*3}`;}).join(" ")} L ${20+49*7.4} 195 L 20 195 Z`} fill="url(#gd)" stroke="#8B5CF6" strokeWidth="2"/>
+            {trail.map((p,i)=>{const sx=20+((p+2)/12)*370;const sy=190-f(p)*3;return<circle key={i} cx={sx} cy={sy} r={i===trail.length-1?6:2} fill="#F59E0B" opacity={i===trail.length-1?1:0.4}/>;})}
+            <circle cx={20+((3+2)/12)*370} cy={190-f(3)*3} r={4} fill="#10B981" opacity="0.5"/><text x={20+((3+2)/12)*370} y={190-f(3)*3+15} fill="#10B981" fontSize="10" textAnchor="middle">min</text>
           </svg>
           <div className="flex items-center gap-4">
             <div className="text-xs text-gray-400">Learning Rate:</div>
@@ -1474,7 +1474,7 @@ function Dashboard({p,onTest,onViewCert}){
         </div>))}
       </div>
     </div>
-    <details className="bg-gray-800/80 rounded-xl border border-gray-700/50">
+    {import.meta.env.DEV&&<details className="bg-gray-800/80 rounded-xl border border-gray-700/50">
       <summary className="p-3 text-xs font-semibold text-gray-500 cursor-pointer flex items-center gap-1.5 select-none hover:text-gray-400"><Settings size={14}/>Dev Tools (click to expand)</summary>
       <div className="px-3 pb-3">
         <p className="text-xs text-gray-600 mb-2">Simulate progress to test the platform flow.</p>
@@ -1487,7 +1487,7 @@ function Dashboard({p,onTest,onViewCert}){
           <button onClick={()=>onTest("full")} className="px-3 py-1.5 rounded-lg bg-red-600/20 text-red-400 text-xs font-medium hover:bg-red-600/30 border border-red-600/30">Full Demo</button>
         </div>
       </div>
-    </details>
+    </details>}
   </div>);
 }
 
@@ -1618,7 +1618,7 @@ export default function App(){
                 {(p.sc||{})[curMod.id]&&<span className="text-xs text-blue-400 bg-blue-900/30 px-2 py-0.5 rounded">Best: {p.sc[curMod.id]}/100</span>}
               </div>
               {!lessonDone&&curMod.hasVisual?(
-                <VisualLesson moduleId={curMod.id} onComplete={()=>{setLessonDone(true);updP(np=>{np.xp=(np.xp||0)+10;});showToast("+10 XP — Lesson complete!");}}/>
+                <VisualLesson key={curMod.id} moduleId={curMod.id} onComplete={()=>{setLessonDone(true);updP(np=>{np.xp=(np.xp||0)+10;});showToast("+10 XP — Lesson complete!");}}/>
               ):!lessonDone?(
                 <div className="flex-1 overflow-auto">
                   <div className="max-w-2xl mx-auto">
