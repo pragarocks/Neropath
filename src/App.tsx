@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { BookOpen, Code, Trophy, Star, Flame, Lock, ChevronRight, ChevronDown, Home, Award, Zap, Copy, CheckCircle, XCircle, Brain, Database, Cpu, Bot, GraduationCap, Target, Play, BarChart3, Clock, TrendingUp, Sparkles, ArrowRight, RefreshCw, Menu, X, Eye, FileText, ChevronLeft, Clipboard, AlertCircle, Settings, Layers, GitBranch, Download } from "lucide-react";
+import { BookOpen, Code, Trophy, Star, Flame, Lock, ChevronRight, ChevronDown, Home, Award, Zap, Copy, CheckCircle, XCircle, Brain, Database, Cpu, Bot, GraduationCap, Target, Play, BarChart3, Clock, TrendingUp, Sparkles, ArrowRight, RefreshCw, Menu, X, Eye, FileText, ChevronLeft, Clipboard, AlertCircle, Settings, Layers, GitBranch, Download, ExternalLink } from "lucide-react";
 
 // ═══════════════ DATA ═══════════════
 const PHASES=[
@@ -107,6 +107,75 @@ const LVLS=[{m:0,n:"Novice",i:"🌱"},{m:100,n:"Apprentice",i:"🔧"},{m:300,n:"
 const getLvl=xp=>{for(let i=LVLS.length-1;i>=0;i--)if(xp>=LVLS[i].m)return{...LVLS[i],idx:i,nx:LVLS[i+1]};return{...LVLS[0],idx:0,nx:LVLS[1]};};
 const mkHash=id=>{const c="abcdefghijklmnopqrstuvwxyz0123456789";let h="";for(let i=0;i<6;i++)h+=c[Math.floor(Math.random()*c.length)];return`NP-${id}-${h}`;};
 
+// ═══════════════ MODULE INFO (Explanations + Resources) ═══════════════
+const MODULE_INFO={
+"1.1":{d:"NumPy is the core library for working with numbers in Python. It lets you store data in arrays (like lists but much faster) and do math on entire arrays at once — this is the foundation of all ML work.",links:[{n:"GeeksforGeeks — NumPy Tutorial",u:"https://www.geeksforgeeks.org/numpy-tutorial/"},{n:"W3Schools — NumPy Introduction",u:"https://www.w3schools.com/python/numpy/numpy_intro.asp"},{n:"NumPy Official Guide",u:"https://numpy.org/doc/stable/user/absolute_beginners.html"}]},
+"1.2":{d:"Advanced NumPy covers powerful operations like transposing matrices, computing eigenvalues, and fancy indexing. These operations are the building blocks for machine learning algorithms behind the scenes.",links:[{n:"Real Python — NumPy Advanced",u:"https://realpython.com/numpy-array-programming/"},{n:"NumPy Docs — Advanced Indexing",u:"https://numpy.org/doc/stable/user/basics.indexing.html"},{n:"GeeksforGeeks — NumPy Advanced",u:"https://www.geeksforgeeks.org/advanced-numpy/"}]},
+"1.3":{d:"Pandas DataFrames are like Excel spreadsheets in Python. They let you organize data in rows and columns, filter it, sort it, and perform calculations — essential for any data analysis task.",links:[{n:"W3Schools — Pandas Tutorial",u:"https://www.w3schools.com/python/pandas/default.asp"},{n:"GeeksforGeeks — Pandas DataFrame",u:"https://www.geeksforgeeks.org/python-pandas-dataframe/"},{n:"Pandas Official Guide",u:"https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html"}]},
+"1.4":{d:"Data wrangling means cleaning up and reshaping messy data into a format you can actually work with. In the real world, data is never perfect — you'll need to merge, pivot, and transform it constantly.",links:[{n:"GeeksforGeeks — Pandas Merge & Join",u:"https://www.geeksforgeeks.org/python-pandas-merging-joining-and-concatenating/"},{n:"Real Python — Pandas Merge",u:"https://realpython.com/pandas-merge-join-and-concat/"},{n:"TutorialsPoint — Pandas",u:"https://www.tutorialspoint.com/python_pandas/index.htm"}]},
+"1.5":{d:"Real datasets always have missing values and outliers (extreme values). Learning to handle these properly is crucial — bad data leads to bad predictions. Think of it as cleaning ingredients before cooking.",links:[{n:"GeeksforGeeks — Handle Missing Data",u:"https://www.geeksforgeeks.org/working-with-missing-data-in-pandas/"},{n:"TutorialsPoint — Pandas Missing Data",u:"https://www.tutorialspoint.com/python_pandas/python_pandas_missing_data.htm"},{n:"Kaggle — Data Cleaning",u:"https://www.kaggle.com/learn/data-cleaning"}]},
+"1.6":{d:"Visualization turns numbers into pictures. Matplotlib and Seaborn help you create charts, graphs, and plots that reveal patterns in your data — because humans understand pictures much better than spreadsheets.",links:[{n:"W3Schools — Matplotlib Tutorial",u:"https://www.w3schools.com/python/matplotlib_intro.asp"},{n:"GeeksforGeeks — Seaborn Tutorial",u:"https://www.geeksforgeeks.org/python-seaborn-tutorial/"},{n:"Matplotlib Official Tutorials",u:"https://matplotlib.org/stable/tutorials/index.html"}]},
+"1.7":{d:"Comprehensions and generators are Python shortcuts for writing cleaner, faster code. Instead of writing 5 lines to transform a list, you can do it in 1 line. Generators also save memory by processing data lazily.",links:[{n:"W3Schools — List Comprehension",u:"https://www.w3schools.com/python/python_lists_comprehension.asp"},{n:"Real Python — Generators",u:"https://realpython.com/introduction-to-python-generators/"},{n:"GeeksforGeeks — Comprehensions",u:"https://www.geeksforgeeks.org/comprehensions-in-python/"}]},
+"1.8":{d:"Object-Oriented Programming (OOP) lets you organize code into reusable classes. In ML, frameworks like scikit-learn use OOP heavily — understanding it helps you build your own models and extend existing ones.",links:[{n:"W3Schools — Python OOP",u:"https://www.w3schools.com/python/python_classes.asp"},{n:"Real Python — OOP in Python",u:"https://realpython.com/python3-object-oriented-programming/"},{n:"GeeksforGeeks — Python OOP",u:"https://www.geeksforgeeks.org/python-oops-concepts/"}]},
+"1.9":{d:"Your first real project! You'll analyze Indian Census 2011 data to discover patterns about population, literacy, and urbanization across states. This is what data scientists actually do at work.",links:[{n:"data.gov.in — Census Data",u:"https://data.gov.in/sector/census"},{n:"GeeksforGeeks — EDA with Python",u:"https://www.geeksforgeeks.org/exploratory-data-analysis-in-python/"},{n:"Kaggle — India Census Dataset",u:"https://www.kaggle.com/datasets/danofer/india-census"}]},
+"2.1":{d:"Vectors are lists of numbers that represent direction and magnitude, while matrices are grids of numbers. ML algorithms use these constantly — your data is stored as matrices and model parameters are vectors.",links:[{n:"3Blue1Brown — Linear Algebra",u:"https://www.3blue1brown.com/topics/linear-algebra"},{n:"GeeksforGeeks — Vectors & Matrices",u:"https://www.geeksforgeeks.org/vector-operations-in-numpy/"},{n:"Khan Academy — Vectors",u:"https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces"}]},
+"2.2":{d:"Matrix multiplication is how neural networks process data. When you feed data through a model, it's literally multiplying matrices together. Understanding this helps you see what's happening inside AI.",links:[{n:"3Blue1Brown — Matrix Multiplication",u:"https://www.youtube.com/watch?v=XkY2DOUCWMU"},{n:"GeeksforGeeks — Matrix Multiplication",u:"https://www.geeksforgeeks.org/multiplication-two-matrices-single-line-using-numpy-python/"},{n:"Khan Academy — Matrix Mult",u:"https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:matrices/x9e81a4f98389efdf:multiplying-matrices-by-matrices/v/matrix-multiplication-intro"}]},
+"2.3":{d:"Eigenvalues tell you the most important directions in your data. PCA uses them to reduce complex data to fewer dimensions while keeping the most useful information — like summarizing a book into key points.",links:[{n:"3Blue1Brown — Eigenvalues",u:"https://www.youtube.com/watch?v=PFDu9oVAE-g"},{n:"GeeksforGeeks — PCA in Python",u:"https://www.geeksforgeeks.org/principal-component-analysis-pca/"},{n:"StatQuest — PCA Explained",u:"https://www.youtube.com/watch?v=FgakZw6K1QQ"}]},
+"2.4":{d:"A derivative tells you how fast something is changing — like a speedometer for math functions. In ML, derivatives help us figure out which direction to adjust our model to make it better.",links:[{n:"3Blue1Brown — Derivatives",u:"https://www.youtube.com/watch?v=9vKqVkMQHKk"},{n:"Khan Academy — Derivatives",u:"https://www.khanacademy.org/math/calculus-1/cs1-derivatives-definition-and-basic-rules"},{n:"GeeksforGeeks — Calculus for ML",u:"https://www.geeksforgeeks.org/calculus-in-machine-learning/"}]},
+"2.5":{d:"Gradient descent is how ML models learn. Imagine you're blindfolded on a hill and need to reach the bottom — you feel which direction is downhill and take a step. That's gradient descent, step by step.",links:[{n:"GeeksforGeeks — Gradient Descent",u:"https://www.geeksforgeeks.org/gradient-descent-algorithm-and-its-variants/"},{n:"TutorialsPoint — Gradient Descent",u:"https://www.tutorialspoint.com/machine_learning_with_python/machine_learning_with_python_gradient_descent.htm"},{n:"3Blue1Brown — Gradient Descent",u:"https://www.youtube.com/watch?v=IHZwWFHWa-w"}]},
+"2.6":{d:"Probability distributions describe how likely different outcomes are. The bell curve (Normal distribution) is everywhere in nature and data. Understanding distributions helps you make better predictions.",links:[{n:"GeeksforGeeks — Probability Distributions",u:"https://www.geeksforgeeks.org/mathematics-probability-distributions-set-1/"},{n:"Khan Academy — Distributions",u:"https://www.khanacademy.org/math/statistics-probability/modeling-distributions-of-data"},{n:"StatQuest — Distributions",u:"https://www.youtube.com/watch?v=rzFX5NWojp0"}]},
+"2.7":{d:"Bayes' Theorem helps you update your beliefs when you get new evidence. It's the math behind spam filters, medical diagnosis, and many ML classifiers. Think: 'Given this email has these words, what's the probability it's spam?'",links:[{n:"3Blue1Brown — Bayes' Theorem",u:"https://www.youtube.com/watch?v=HZGCoVF3YvM"},{n:"GeeksforGeeks — Bayes' Theorem",u:"https://www.geeksforgeeks.org/bayes-theorem/"},{n:"StatQuest — Naive Bayes",u:"https://www.youtube.com/watch?v=O2L2Uv9pdDA"}]},
+"2.8":{d:"Statistics gives you tools to summarize data and test whether patterns are real or just random noise. Mean, median, standard deviation, and hypothesis tests are essential for understanding any dataset.",links:[{n:"W3Schools — Python Statistics",u:"https://www.w3schools.com/python/python_ml_standard_deviation.asp"},{n:"GeeksforGeeks — Statistics with Python",u:"https://www.geeksforgeeks.org/python-statistics-module/"},{n:"Khan Academy — Statistics",u:"https://www.khanacademy.org/math/statistics-probability"}]},
+"2.9":{d:"Analyze real weather data from India's Meteorological Department. You'll discover rainfall patterns, temperature trends, and test whether climate is actually changing — using the math you just learned.",links:[{n:"IMD — India Weather Data",u:"https://mausam.imd.gov.in/"},{n:"GeeksforGeeks — Time Series Analysis",u:"https://www.geeksforgeeks.org/python-time-series-analysis/"},{n:"Kaggle — India Weather Dataset",u:"https://www.kaggle.com/datasets/vanvalkenberg/historicalweatherdataforindiancities"}]},
+"3.1":{d:"Machine Learning is teaching computers to learn from examples instead of being explicitly programmed. Instead of writing rules, you show the computer data and it figures out the patterns itself.",links:[{n:"GeeksforGeeks — What is ML?",u:"https://www.geeksforgeeks.org/ml-machine-learning/"},{n:"Google — ML Crash Course",u:"https://developers.google.com/machine-learning/crash-course"},{n:"TutorialsPoint — ML Introduction",u:"https://www.tutorialspoint.com/machine_learning/machine_learning_introduction.htm"}]},
+"3.2":{d:"Every ML project follows the same workflow: collect data → clean it → pick a model → train it → evaluate it → improve it. Understanding this pipeline saves you from common mistakes.",links:[{n:"GeeksforGeeks — ML Pipeline",u:"https://www.geeksforgeeks.org/ml-machine-learning-pipeline/"},{n:"scikit-learn — ML Tutorial",u:"https://scikit-learn.org/stable/tutorial/basic/tutorial.html"},{n:"Kaggle — ML Course",u:"https://www.kaggle.com/learn/intro-to-machine-learning"}]},
+"3.3":{d:"You split data into training and testing sets to check if your model actually learned or just memorized. It's like studying with flashcards, then testing yourself with new questions you haven't seen.",links:[{n:"GeeksforGeeks — Train Test Split",u:"https://www.geeksforgeeks.org/how-to-split-a-dataset-into-train-and-test-sets-using-python/"},{n:"scikit-learn — Cross Validation",u:"https://scikit-learn.org/stable/modules/cross_validation.html"},{n:"TutorialsPoint — Train/Test",u:"https://www.tutorialspoint.com/machine_learning_with_python/machine_learning_with_python_splitting_the_data.htm"}]},
+"3.4":{d:"Linear regression finds the best straight line through your data points. It's the simplest ML model — predict a number (like house price) based on inputs (like square footage). Simple but powerful.",links:[{n:"GeeksforGeeks — Linear Regression",u:"https://www.geeksforgeeks.org/ml-linear-regression/"},{n:"W3Schools — Linear Regression",u:"https://www.w3schools.com/python/python_ml_linear_regression.asp"},{n:"scikit-learn — Linear Models",u:"https://scikit-learn.org/stable/modules/linear_model.html"}]},
+"3.5":{d:"Logistic regression predicts yes/no outcomes — like 'will this customer buy?' or 'is this email spam?'. Despite the name, it's actually a classification model that outputs a probability between 0 and 1.",links:[{n:"GeeksforGeeks — Logistic Regression",u:"https://www.geeksforgeeks.org/understanding-logistic-regression/"},{n:"scikit-learn — Logistic Regression",u:"https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"},{n:"StatQuest — Logistic Regression",u:"https://www.youtube.com/watch?v=yIYKR4sgzI8"}]},
+"3.6":{d:"Decision trees make predictions by asking a series of yes/no questions, like a flowchart. 'Is temperature > 30°C? → Is humidity > 70%? → Predict rain.' They're easy to understand and visualize.",links:[{n:"GeeksforGeeks — Decision Tree",u:"https://www.geeksforgeeks.org/decision-tree/"},{n:"scikit-learn — Decision Trees",u:"https://scikit-learn.org/stable/modules/tree.html"},{n:"W3Schools — Decision Tree",u:"https://www.w3schools.com/python/python_ml_decision_tree.asp"}]},
+"3.7":{d:"Random forests combine many decision trees and let them vote on the answer. Like asking 100 people instead of 1 — the group is usually smarter than any individual. One of the most reliable ML models.",links:[{n:"GeeksforGeeks — Random Forest",u:"https://www.geeksforgeeks.org/random-forest-algorithm-in-machine-learning/"},{n:"scikit-learn — Random Forests",u:"https://scikit-learn.org/stable/modules/ensemble.html#forest"},{n:"StatQuest — Random Forests",u:"https://www.youtube.com/watch?v=J4Wdy0Wc_xQ"}]},
+"3.8":{d:"Support Vector Machines (SVM) find the best boundary line between categories. Imagine drawing the widest possible road between two groups of points — SVM finds that road. Works great for complex patterns.",links:[{n:"GeeksforGeeks — SVM",u:"https://www.geeksforgeeks.org/support-vector-machine-algorithm/"},{n:"scikit-learn — SVM",u:"https://scikit-learn.org/stable/modules/svm.html"},{n:"TutorialsPoint — SVM",u:"https://www.tutorialspoint.com/machine_learning_with_python/machine_learning_with_python_classification_algorithms_support_vector_machine.htm"}]},
+"3.9":{d:"K-Nearest Neighbors is the simplest ML idea: to classify something, look at the K closest examples and go with the majority. Like asking your nearest neighbors what restaurant to go to.",links:[{n:"GeeksforGeeks — KNN",u:"https://www.geeksforgeeks.org/k-nearest-neighbours/"},{n:"W3Schools — KNN",u:"https://www.w3schools.com/python/python_ml_knn.asp"},{n:"scikit-learn — KNN",u:"https://scikit-learn.org/stable/modules/neighbors.html"}]},
+"3.10":{d:"K-Means groups similar data points together without being told what the groups are. It's 'unsupervised learning' — like sorting laundry by color without anyone telling you the categories first.",links:[{n:"GeeksforGeeks — K-Means",u:"https://www.geeksforgeeks.org/k-means-clustering-introduction/"},{n:"W3Schools — K-Means",u:"https://www.w3schools.com/python/python_ml_k-means.asp"},{n:"scikit-learn — K-Means",u:"https://scikit-learn.org/stable/modules/clustering.html#k-means"}]},
+"3.11":{d:"How do you know if your model is good? Accuracy alone isn't enough. You'll learn precision, recall, F1-score, and ROC curves — different ways to measure model quality for different situations.",links:[{n:"GeeksforGeeks — Model Evaluation",u:"https://www.geeksforgeeks.org/metrics-for-machine-learning-model/"},{n:"scikit-learn — Model Evaluation",u:"https://scikit-learn.org/stable/modules/model_evaluation.html"},{n:"TutorialsPoint — Confusion Matrix",u:"https://www.tutorialspoint.com/machine_learning_with_python/machine_learning_with_python_confusion_matrix.htm"}]},
+"3.12":{d:"Hyperparameters are settings you choose before training (like how deep a tree can grow). Tuning them is like adjusting the knobs on a radio to get the clearest signal — small changes can make big differences.",links:[{n:"GeeksforGeeks — Hyperparameter Tuning",u:"https://www.geeksforgeeks.org/hyperparameter-tuning/"},{n:"scikit-learn — Grid Search",u:"https://scikit-learn.org/stable/modules/grid_search.html"},{n:"Kaggle — Hyperparameter Tuning",u:"https://www.kaggle.com/learn/intermediate-machine-learning"}]},
+"3.13":{d:"XGBoost is one of the most powerful ML algorithms and wins many competitions. It builds trees one at a time, where each new tree fixes the mistakes of the previous ones — like learning from your errors.",links:[{n:"GeeksforGeeks — XGBoost",u:"https://www.geeksforgeeks.org/xgboost/"},{n:"XGBoost Official Docs",u:"https://xgboost.readthedocs.io/en/latest/"},{n:"StatQuest — XGBoost",u:"https://www.youtube.com/watch?v=OtD8wVaFm6E"}]},
+"3.14":{d:"Time to put it all together! Compare Logistic Regression, Random Forest, and XGBoost on the same dataset. Learn which models work best and why — this is what ML engineers do in practice.",links:[{n:"scikit-learn — Model Comparison",u:"https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html"},{n:"GeeksforGeeks — Model Comparison",u:"https://www.geeksforgeeks.org/comparing-machine-learning-algorithms/"},{n:"Kaggle — ML Competition Tips",u:"https://www.kaggle.com/competitions"}]},
+"4.1":{d:"Predict crop yields using real Indian agricultural data. Help farmers make better decisions by analyzing soil, weather, and historical yield data. A practical project with real social impact.",links:[{n:"data.gov.in — Agriculture",u:"https://data.gov.in/sector/agriculture"},{n:"GeeksforGeeks — Crop Prediction",u:"https://www.geeksforgeeks.org/crop-recommendation-system/"},{n:"Kaggle — India Agriculture",u:"https://www.kaggle.com/datasets/akshatgupta7/crop-yield-in-indian-states-dataset"}]},
+"4.2":{d:"Build a model that forecasts air quality in Indian cities. With pollution being a major health concern, your model could help people plan outdoor activities and authorities take preventive action.",links:[{n:"CPCB Air Quality Data",u:"https://app.cpcbccr.com/ccr/"},{n:"GeeksforGeeks — Air Quality Prediction",u:"https://www.geeksforgeeks.org/air-quality-prediction-using-machine-learning/"},{n:"Kaggle — India Air Quality",u:"https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india"}]},
+"4.3":{d:"Predict which students are at risk of dropping out using educational data. This kind of model helps schools intervene early and support students who need help — AI for social good.",links:[{n:"data.gov.in — Education",u:"https://data.gov.in/sector/education"},{n:"GeeksforGeeks — Student Performance",u:"https://www.geeksforgeeks.org/student-performance-prediction/"},{n:"Kaggle — Student Dropout",u:"https://www.kaggle.com/datasets/thedevastator/higher-education-predictors-of-student-retention"}]},
+"4.4":{d:"Help optimize healthcare resource allocation across Indian districts. Analyze hospital capacity, disease patterns, and population data to suggest where medical resources are needed most.",links:[{n:"data.gov.in — Health",u:"https://data.gov.in/sector/health"},{n:"GeeksforGeeks — Healthcare ML",u:"https://www.geeksforgeeks.org/machine-learning-in-healthcare/"},{n:"Kaggle — India Healthcare",u:"https://www.kaggle.com/datasets/nehaprabhavalkar/indian-healthcare-dataset"}]},
+"4.5":{d:"Discover patterns in India's international trade data. Which products does India export most? How have trade relationships changed? Use ML to find hidden trends in economic data.",links:[{n:"data.gov.in — Commerce",u:"https://data.gov.in/sector/commerce"},{n:"GeeksforGeeks — Trade Analysis",u:"https://www.geeksforgeeks.org/analyzing-selling-price-of-used-cars-using-python/"},{n:"Kaggle — Trade Data",u:"https://www.kaggle.com/datasets/unitednations/global-commodity-trade-statistics"}]},
+"5.1":{d:"A perceptron is the simplest neural network — just one artificial brain cell. It takes inputs, multiplies them by weights, and makes a decision. Everything in deep learning builds on this tiny unit.",links:[{n:"GeeksforGeeks — Perceptron",u:"https://www.geeksforgeeks.org/perceptron-algorithm/"},{n:"TutorialsPoint — Perceptron",u:"https://www.tutorialspoint.com/machine_learning_with_python/machine_learning_with_python_perceptron.htm"},{n:"3Blue1Brown — Neural Networks",u:"https://www.youtube.com/watch?v=aircAruvnKk"}]},
+"5.2":{d:"Activation functions decide whether a neuron should 'fire' or not. ReLU, Sigmoid, and Tanh each have different behaviors. Choosing the right one can make or break your neural network.",links:[{n:"GeeksforGeeks — Activation Functions",u:"https://www.geeksforgeeks.org/activation-functions-neural-networks/"},{n:"TutorialsPoint — Activation Functions",u:"https://www.tutorialspoint.com/machine_learning_with_python/machine_learning_with_python_activation_functions.htm"},{n:"Machine Learning Mastery",u:"https://machinelearningmastery.com/choose-an-activation-function-for-deep-learning/"}]},
+"5.3":{d:"By stacking multiple layers of neurons together, you create a network that can learn incredibly complex patterns. Each layer transforms the data, building up from simple features to abstract concepts.",links:[{n:"3Blue1Brown — Deep Learning",u:"https://www.youtube.com/watch?v=aircAruvnKk"},{n:"GeeksforGeeks — Multi-Layer Perceptron",u:"https://www.geeksforgeeks.org/multi-layer-perceptron-learning-in-tensorflow/"},{n:"TensorFlow — Neural Nets",u:"https://www.tensorflow.org/tutorials/quickstart/beginner"}]},
+"5.4":{d:"Backpropagation is how neural networks learn from mistakes. It calculates how much each neuron contributed to the error and adjusts weights accordingly — like tracing back through a chain of decisions.",links:[{n:"3Blue1Brown — Backpropagation",u:"https://www.youtube.com/watch?v=Ilg3gGewQ5U"},{n:"GeeksforGeeks — Backpropagation",u:"https://www.geeksforgeeks.org/backpropagation-in-neural-network/"},{n:"TutorialsPoint — Backpropagation",u:"https://www.tutorialspoint.com/machine_learning_with_python/machine_learning_with_python_backpropagation.htm"}]},
+"5.5":{d:"Build a neural network from scratch using only NumPy — no frameworks! This gives you deep understanding of what TensorFlow and PyTorch do under the hood. The best way to truly understand neural nets.",links:[{n:"GeeksforGeeks — NN from Scratch",u:"https://www.geeksforgeeks.org/implementation-of-neural-network-from-scratch-using-numpy/"},{n:"Real Python — Neural Net Scratch",u:"https://realpython.com/python-ai-neural-network/"},{n:"Sentdex — NN from Scratch",u:"https://nnfs.io/"}]},
+"5.6":{d:"TensorFlow and Keras are like power tools for building neural networks. Instead of coding everything from scratch, you can build complex models in just a few lines of code.",links:[{n:"TensorFlow Official Tutorial",u:"https://www.tensorflow.org/tutorials"},{n:"GeeksforGeeks — Keras Tutorial",u:"https://www.geeksforgeeks.org/keras-tutorial/"},{n:"W3Schools — TensorFlow",u:"https://www.w3schools.com/python/python_ml_tensorflow.asp"}]},
+"5.7":{d:"CNNs (Convolutional Neural Networks) are designed for images. They scan images with small filters to detect edges, textures, and shapes — mimicking how our eyes process visual information.",links:[{n:"GeeksforGeeks — CNN",u:"https://www.geeksforgeeks.org/introduction-convolution-neural-network/"},{n:"TensorFlow — CNN Tutorial",u:"https://www.tensorflow.org/tutorials/images/cnn"},{n:"CS231n — CNN",u:"https://cs231n.github.io/convolutional-networks/"}]},
+"5.8":{d:"Transfer learning lets you reuse a model trained on millions of images and adapt it to your specific problem. Instead of training from scratch, you start with a pre-trained model — saving weeks of work.",links:[{n:"GeeksforGeeks — Transfer Learning",u:"https://www.geeksforgeeks.org/ml-introduction-to-transfer-learning/"},{n:"TensorFlow — Transfer Learning",u:"https://www.tensorflow.org/tutorials/images/transfer_learning"},{n:"Keras — Fine Tuning",u:"https://keras.io/guides/transfer_learning/"}]},
+"5.9":{d:"RNNs and LSTMs are designed for sequential data like text, time series, and speech. They have memory — they remember previous inputs to understand context, like how you understand a sentence word by word.",links:[{n:"GeeksforGeeks — RNN & LSTM",u:"https://www.geeksforgeeks.org/understanding-of-lstm-networks/"},{n:"TutorialsPoint — RNN",u:"https://www.tutorialspoint.com/machine_learning_with_python/machine_learning_with_python_recurrent_neural_network.htm"},{n:"Colah's Blog — LSTM",u:"https://colah.github.io/posts/2015-08-Understanding-LSTMs/"}]},
+"5.10":{d:"Build an image classifier that can identify objects in pictures! This project combines everything from CNNs and transfer learning to create a real-world deep learning application.",links:[{n:"TensorFlow — Image Classification",u:"https://www.tensorflow.org/tutorials/images/classification"},{n:"GeeksforGeeks — Image Classifier",u:"https://www.geeksforgeeks.org/image-classifier-using-cnn/"},{n:"PyTorch — Image Tutorial",u:"https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html"}]},
+"6.1":{d:"Before feeding text to ML models, you need to clean it — removing punctuation, converting to lowercase, splitting into words (tokenization). Raw text is messy, and computers need it structured.",links:[{n:"GeeksforGeeks — Text Preprocessing",u:"https://www.geeksforgeeks.org/nlp-text-preprocessing-techniques/"},{n:"Real Python — NLP with spaCy",u:"https://realpython.com/natural-language-processing-spacy-python/"},{n:"NLTK Official Guide",u:"https://www.nltk.org/book/ch03.html"}]},
+"6.2":{d:"TF-IDF and Bag of Words convert text into numbers that ML models can understand. They count word frequencies to represent documents — like turning a paragraph into a numerical fingerprint.",links:[{n:"GeeksforGeeks — TF-IDF",u:"https://www.geeksforgeeks.org/understanding-tf-idf-term-frequency-inverse-document-frequency/"},{n:"scikit-learn — Text Features",u:"https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction"},{n:"TutorialsPoint — Bag of Words",u:"https://www.tutorialspoint.com/natural_language_processing/natural_language_processing_bag_of_words.htm"}]},
+"6.3":{d:"Word embeddings represent words as vectors where similar words are close together. 'King' and 'Queen' are nearby in this space, just like 'Cat' and 'Dog'. This captures meaning, not just spelling.",links:[{n:"GeeksforGeeks — Word Embeddings",u:"https://www.geeksforgeeks.org/word-embeddings-in-nlp/"},{n:"TensorFlow — Word2Vec",u:"https://www.tensorflow.org/text/tutorials/word2vec"},{n:"Jay Alammar — Word2Vec Visual",u:"https://jalammar.github.io/illustrated-word2vec/"}]},
+"6.4":{d:"Attention lets models focus on the most relevant parts of the input — like how you pay more attention to key words in a long sentence. This breakthrough made modern AI language models possible.",links:[{n:"Jay Alammar — Attention",u:"https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/"},{n:"GeeksforGeeks — Attention",u:"https://www.geeksforgeeks.org/ml-attention-mechanism/"},{n:"The Illustrated Transformer",u:"https://jalammar.github.io/illustrated-transformer/"}]},
+"6.5":{d:"Transformers are the architecture behind ChatGPT, BERT, and all modern AI. They process all words in parallel using attention, making them incredibly fast and powerful at understanding language.",links:[{n:"Jay Alammar — Illustrated Transformer",u:"https://jalammar.github.io/illustrated-transformer/"},{n:"GeeksforGeeks — Transformer",u:"https://www.geeksforgeeks.org/transformer-neural-network-in-deep-learning-overview/"},{n:"Harvard NLP — Annotated Transformer",u:"https://nlp.seas.harvard.edu/annotated-transformer/"}]},
+"6.6":{d:"BERT reads text in both directions (left and right) to understand context. GPT generates text one word at a time. Together, they revolutionized NLP and power today's AI assistants and search engines.",links:[{n:"Jay Alammar — Illustrated BERT",u:"https://jalammar.github.io/illustrated-bert/"},{n:"GeeksforGeeks — BERT vs GPT",u:"https://www.geeksforgeeks.org/gpt-vs-bert/"},{n:"Hugging Face — Transformers Course",u:"https://huggingface.co/course/chapter1/1"}]},
+"6.7":{d:"Hugging Face is like an app store for AI models. You can download pre-trained models for translation, summarization, sentiment analysis, and more — all with just a few lines of Python code.",links:[{n:"Hugging Face — Quickstart",u:"https://huggingface.co/docs/transformers/quicktour"},{n:"Hugging Face — NLP Course",u:"https://huggingface.co/course"},{n:"GeeksforGeeks — Hugging Face",u:"https://www.geeksforgeeks.org/hugging-face-transformers/"}]},
+"6.8":{d:"Build a sentiment analyzer that determines if text is positive, negative, or neutral! This project combines text preprocessing, embeddings, and transformer models into a real NLP application.",links:[{n:"GeeksforGeeks — Sentiment Analysis",u:"https://www.geeksforgeeks.org/twitter-sentiment-analysis-using-python/"},{n:"Hugging Face — Sentiment",u:"https://huggingface.co/blog/sentiment-analysis-python"},{n:"Kaggle — Sentiment Analysis",u:"https://www.kaggle.com/learn/natural-language-processing"}]},
+"7.1":{d:"Large Language Models (LLMs) like GPT-4 and Claude are trained on massive text data and can write, reason, code, and chat. Understanding how they work helps you use them effectively and build with them.",links:[{n:"OpenAI — GPT Guide",u:"https://platform.openai.com/docs/guides/text-generation"},{n:"Anthropic — Claude Docs",u:"https://docs.anthropic.com/"},{n:"GeeksforGeeks — LLM Overview",u:"https://www.geeksforgeeks.org/large-language-model-llm/"}]},
+"7.2":{d:"LLM APIs let you send text to powerful AI models and get responses back — no GPU needed. You can build chatbots, content generators, code assistants, and more by just making API calls.",links:[{n:"OpenAI API — Quickstart",u:"https://platform.openai.com/docs/quickstart"},{n:"Anthropic API — Getting Started",u:"https://docs.anthropic.com/en/docs/getting-started"},{n:"GeeksforGeeks — LLM APIs",u:"https://www.geeksforgeeks.org/openai-api-tutorial/"}]},
+"7.3":{d:"Embeddings turn text into numerical vectors, and vector databases store them for fast similarity search. This is how AI apps 'remember' information and find relevant content from millions of documents.",links:[{n:"Pinecone — What are Embeddings?",u:"https://www.pinecone.io/learn/vector-embeddings/"},{n:"GeeksforGeeks — Vector Database",u:"https://www.geeksforgeeks.org/vector-database/"},{n:"Chromadb — Getting Started",u:"https://docs.trychroma.com/getting-started"}]},
+"7.4":{d:"RAG (Retrieval-Augmented Generation) lets AI answer questions using your own documents. It first searches for relevant information, then generates an answer — like an AI that can read your entire company's docs.",links:[{n:"GeeksforGeeks — RAG Pipeline",u:"https://www.geeksforgeeks.org/retrieval-augmented-generation-rag/"},{n:"LangChain — RAG Tutorial",u:"https://python.langchain.com/docs/tutorials/rag/"},{n:"Pinecone — RAG Guide",u:"https://www.pinecone.io/learn/retrieval-augmented-generation/"}]},
+"7.5":{d:"AI Agents are LLMs that can take actions — browse the web, write code, use tools, and make decisions autonomously. They're the next frontier of AI, going beyond just chatting to actually doing tasks.",links:[{n:"LangChain — Agents Guide",u:"https://python.langchain.com/docs/concepts/agents/"},{n:"GeeksforGeeks — AI Agents",u:"https://www.geeksforgeeks.org/ai-agents/"},{n:"Anthropic — Agent SDK",u:"https://docs.anthropic.com/en/docs/agents"}]},
+"7.6":{d:"Fine-tuning adapts a pre-trained LLM to your specific task. LoRA makes this efficient by only modifying a small number of parameters — like teaching a professor a new specialty without re-learning everything.",links:[{n:"Hugging Face — Fine-Tuning",u:"https://huggingface.co/docs/transformers/training"},{n:"GeeksforGeeks — LoRA",u:"https://www.geeksforgeeks.org/lora-low-rank-adaptation/"},{n:"Sebastian Raschka — LoRA",u:"https://magazine.sebastianraschka.com/p/lora-and-dora-from-scratch"}]},
+"7.7":{d:"Build your own AI assistant that can answer questions, search documents, and use tools! This capstone project for the LLM module brings together APIs, RAG, and agent design into one application.",links:[{n:"LangChain — Build a Chatbot",u:"https://python.langchain.com/docs/tutorials/chatbot/"},{n:"OpenAI — Assistants",u:"https://platform.openai.com/docs/assistants/overview"},{n:"GeeksforGeeks — AI Chatbot",u:"https://www.geeksforgeeks.org/how-to-build-a-chatbot-using-openai-api/"}]},
+"8.1":{d:"Choose a capstone project that excites you! Pick a real problem, define your approach, and plan your ML solution. This is your chance to apply everything you've learned to something meaningful.",links:[{n:"Kaggle — Project Ideas",u:"https://www.kaggle.com/datasets"},{n:"GeeksforGeeks — ML Projects",u:"https://www.geeksforgeeks.org/machine-learning-projects/"},{n:"data.gov.in — Indian Datasets",u:"https://data.gov.in/"}]},
+"8.2":{d:"Build and submit your capstone project end-to-end: data collection, preprocessing, model training, evaluation, and a clear writeup. Show the world what you can build with ML!",links:[{n:"Kaggle — Notebook Tips",u:"https://www.kaggle.com/docs/notebooks"},{n:"GeeksforGeeks — ML Project Guide",u:"https://www.geeksforgeeks.org/how-to-start-a-machine-learning-project/"},{n:"GitHub — Project Structure",u:"https://drivendata.github.io/cookiecutter-data-science/"}]},
+"8.3":{d:"Congratulations on reaching the final certification! Review your complete learning journey, submit your best work, and earn your NeuraPath certificate. You're now ready for real-world ML work.",links:[{n:"Kaggle — Certifications",u:"https://www.kaggle.com/learn/certification"},{n:"Google — ML Certification",u:"https://developers.google.com/machine-learning"},{n:"Coursera — ML Specialization",u:"https://www.coursera.org/specializations/machine-learning-introduction"}]},
+};
+
 // ═══════════════ EXERCISES (ALL DETAILED) ═══════════════
 const EXERCISES={
 "1.1":{t:"NumPy Array Operations",p:`Create a NumPy program that:\n1. Creates a 1D array of numbers 1-10\n2. Reshapes it into a 2x5 matrix\n3. Calculates the sum of each row\n4. Finds the element-wise product of the matrix with itself\n5. Extracts the second column\n\nWrite clean, commented Python code.`,r:`CORRECTNESS (40): Array creation, reshape, row sums, element-wise product, column extraction\nCODE_QUALITY (20): Clean variable names, proper comments\nCOMPLETENESS (25): All 5 tasks completed with print output\nUNDERSTANDING (15): Comments show WHY each operation works`},
@@ -169,7 +238,7 @@ const EXERCISES={
 "8.3":{t:"Final Certification",p:`Demonstrate mastery of the full ML curriculum:\n1. Complete a 90-minute coding assessment covering Python, ML, and DL\n2. Record a 10-minute capstone walkthrough video\n3. Conduct peer review of two capstone projects with 200+ word feedback each\n4. Respond to reviewer feedback on your capstone\n5. Complete 30-question theory exam (probability, linear algebra, evaluation, NLP)`,r:`CORRECTNESS (40): assessment solutions produce correct outputs; exam score > 70%\nCODE_QUALITY (20): assessment code is clean with brief inline comments\nCOMPLETENESS (25): all components (assessment, video, reviews, response, exam) submitted\nUNDERSTANDING (15): video clearly communicates design decisions; peer feedback is constructive`},
 };
 
-const defP={xp:0,st:1,cm:[],sc:{},up:[1],ach:[],ll:new Date().toDateString(),no:false,eb:false};
+const defP={xp:0,st:1,cm:[],sc:{},up:[1],ach:[],ll:new Date().toDateString(),no:false,eb:false,name:""};
 
 // ═══════════════ VISUAL LESSONS ═══════════════
 
@@ -803,47 +872,54 @@ function LessonShell({steps,step,setStep,anim,onComplete}){
 }
 
 // ═══════════════ EVALUATOR ═══════════════
-function Evaluator({mid,mname,onScore}){
+function Evaluator({mid,mname,onScore,onBack,onNext}){
   const [mode,setMode]=useState("code");
   const [code,setCode]=useState("");
   const [resp,setResp]=useState("");
   const [result,setResult]=useState(null);
-  const [evalHash]=useState(()=>mkHash(mid));
   const [copied,setCopied]=useState(false);
-  const ex=EXERCISES[mid]||{t:mname,p:`Complete the ${mname} exercise with working Python code.`,r:`CORRECTNESS (40): Works correctly\nCODE_QUALITY (20): Clean code\nCOMPLETENESS (25): All requirements\nUNDERSTANDING (15): Shows comprehension`};
+  const ex=EXERCISES[mid]||{t:mname,p:`Complete the ${mname} exercise with working Python code.`,r:`Code Quality (50): Does the code run correctly and produce expected output?\nCompleteness (30): Are all tasks in the problem addressed?\nClarity (20): Is the code readable with good variable names?`};
+  const PASS_SCORE=70;
 
-  const prompt=`You are an ML course evaluator. Score this submission strictly but fairly.\n\nEXERCISE: ${ex.t}\nMODULE: ${mid} — ${mname}\nHASH: ${evalHash}\n\nPROBLEM:\n${ex.p}\n\nSTUDENT CODE:\n\`\`\`python\n${code}\n\`\`\`\n\nRUBRIC (total 100):\n${ex.r}\n\nBe strict. Empty or wrong code = low score.\n\nRESPOND IN THIS EXACT FORMAT:\n===EVALUATION START===\nHASH: ${evalHash}\nSCORE: [number]/100\nCORRECTNESS: [score]/40 - [feedback]\nCODE_QUALITY: [score]/20 - [feedback]\nCOMPLETENESS: [score]/25 - [feedback]\nUNDERSTANDING: [score]/15 - [feedback]\nSUMMARY: [2-3 sentences]\nSUGGESTION: [what to improve]\n===EVALUATION END===`;
+  const prompt=`You are a friendly coding mentor evaluating a student's Python/ML exercise. Be encouraging but honest.\n\nEXERCISE: ${ex.t}\nMODULE: ${mid} — ${mname}\n\nPROBLEM:\n${ex.p}\n\nSTUDENT CODE:\n\`\`\`python\n${code}\n\`\`\`\n\nEVALUATION CRITERIA:\n${ex.r}\n\nInstructions:\n- Focus on whether the code actually works and solves the problem\n- Give partial credit for attempts that show understanding\n- Be encouraging, not harsh\n- Empty or completely wrong code = 0-30\n- Partial solution = 40-70\n- Working solution with minor issues = 70-84\n- Good working solution = 85-95\n- Excellent solution = 96-100\n\nRESPOND IN THIS EXACT FORMAT:\nSCORE: [number]/100\nFEEDBACK: [2-3 sentences about what works well and what could improve]\nTIP: [one specific improvement suggestion]`;
 
   const parse=(t)=>{
     try{
-      if(!t.includes("===EVALUATION START===")||!t.includes("===EVALUATION END==="))return{err:"Missing ===EVALUATION START=== or ===EVALUATION END=== markers."};
-      const b=t.split("===EVALUATION START===")[1].split("===EVALUATION END===")[0];
-      const sm=b.match(/SCORE:\s*(\d+)\/100/);if(!sm)return{err:"No SCORE: XX/100 found."};
-      const sc=parseInt(sm[1]);
-      const hm=b.match(/HASH:\s*([\w.\-]+)/);if(!hm||hm[1]!==evalHash)return{err:`Hash mismatch. Expected ${evalHash}.`};
-      const cats={};
-      for(const c of["CORRECTNESS","CODE_QUALITY","COMPLETENESS","UNDERSTANDING"]){const m=b.match(new RegExp(`${c}:\\s*(\\d+)\\/\\d+\\s*-\\s*(.+)`));if(m)cats[c]={s:parseInt(m[1]),f:m[2].trim()};}
-      const su=b.match(/SUMMARY:\s*(.+?)(?=\nSUGGESTION:|\n===)/s);
-      const sg=b.match(/SUGGESTION:\s*(.+?)(?=\n===)/s);
-      return{sc,cats,summary:su?su[1].trim():"",suggestion:sg?sg[1].trim():"",ok:true};
-    }catch(e){return{err:"Parse failed. Copy the full AI response."};}
+      const sm=t.match(/SCORE:\s*(\d+)\s*(?:\/\s*100)?/i);
+      if(!sm)return{err:"Could not find a score. Make sure the AI response contains 'SCORE: XX/100'."};
+      const sc=Math.min(100,Math.max(0,parseInt(sm[1])));
+      const fb=t.match(/FEEDBACK:\s*(.+?)(?=\nTIP:|\n*$)/si);
+      const tp=t.match(/TIP:\s*(.+?)$/si);
+      return{sc,feedback:fb?fb[1].trim():"",tip:tp?tp[1].trim():"",ok:true};
+    }catch(e){return{err:"Could not parse the response. Please paste the full AI response."};}
   };
 
   const submit=()=>{const r=parse(resp);setResult(r);if(r.ok)onScore(r.sc);setMode("result");};
   const cp=()=>{navigator.clipboard.writeText(prompt);setCopied(true);setTimeout(()=>setCopied(false),2e3);};
 
-  if(mode==="code")return(<div className="h-full flex flex-col">
-    <div className="mb-3"><h2 className="text-lg font-bold text-white flex items-center gap-2"><Code size={18}/>Exercise: {ex.t}</h2><p className="text-gray-500 text-xs mt-0.5">Module {mid}</p></div>
+  const info=MODULE_INFO[mid];
+  const pyUrl="https://www.programiz.com/python-programming/online-compiler/";
+  const colabUrl="https://colab.research.google.com/#create=true";
+
+  if(mode==="code")return(<div className="h-full flex flex-col overflow-auto">
+    <div className="mb-3 flex items-start justify-between">
+      <div><h2 className="text-lg font-bold text-white flex items-center gap-2"><Code size={18}/>Exercise: {ex.t}</h2><p className="text-gray-500 text-xs mt-0.5">Module {mid} • Score {PASS_SCORE}+ to pass</p></div>
+      {onBack&&<button onClick={onBack} className="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-400 text-xs hover:bg-gray-700 flex items-center gap-1 shrink-0"><ChevronLeft size={12}/>Back to Learn</button>}
+    </div>
     <div className="bg-gray-800/80 rounded-xl p-3 mb-3 text-sm text-gray-300 whitespace-pre-wrap max-h-40 overflow-auto">{ex.p}</div>
-    <textarea value={code} onChange={e=>setCode(e.target.value)} placeholder="Write your Python code here..." className="flex-1 min-h-0 bg-gray-900 border border-gray-700 rounded-xl p-3 text-green-300 font-mono text-sm resize-none focus:outline-none focus:border-blue-500" spellCheck={false}/>
-    <div className="flex justify-between mt-3 pt-3 border-t border-gray-800">
-      <span className="text-xs text-gray-600">Write code → Generate eval prompt → Use any AI</span>
+    <div className="flex gap-2 mb-3 flex-wrap">
+      <a href={pyUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-900/30 border border-green-700/40 text-green-400 text-xs hover:bg-green-900/50 transition-colors"><Play size={12}/>Try in Online Compiler</a>
+      <a href={colabUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-yellow-900/30 border border-yellow-700/40 text-yellow-400 text-xs hover:bg-yellow-900/50 transition-colors"><ExternalLink size={12}/>Open Google Colab</a>
+    </div>
+    <textarea value={code} onChange={e=>setCode(e.target.value)} placeholder="Write your Python code here... (Test it in the online compiler first!)" className="flex-1 min-h-32 bg-gray-900 border border-gray-700 rounded-xl p-3 text-green-300 font-mono text-sm resize-none focus:outline-none focus:border-blue-500" spellCheck={false}/>
+    <div className="flex justify-between items-center mt-3 pt-3 border-t border-gray-800">
+      <span className="text-xs text-gray-600">Write code → Get AI score → {PASS_SCORE}+ to pass</span>
       <button onClick={()=>code.trim()&&setMode("prompt")} disabled={!code.trim()} className="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 disabled:opacity-30 text-sm font-semibold flex items-center gap-1">Generate Prompt<ArrowRight size={14}/></button>
     </div>
   </div>);
 
   if(mode==="prompt")return(<div className="h-full flex flex-col">
-    <div className="mb-2"><h2 className="text-base font-bold text-white flex items-center gap-2"><Clipboard size={16}/>Copy Evaluation Prompt</h2><p className="text-gray-500 text-xs">Paste into Claude, ChatGPT, Gemini, or any local model</p></div>
+    <div className="mb-2"><h2 className="text-base font-bold text-white flex items-center gap-2"><Clipboard size={16}/>Copy Evaluation Prompt</h2><p className="text-gray-500 text-xs">Paste into Claude, ChatGPT, Gemini, or any AI model</p></div>
     <div className="flex-1 min-h-0 bg-gray-900 border border-gray-700 rounded-xl p-3 overflow-auto"><pre className="text-xs text-gray-400 whitespace-pre-wrap font-mono">{prompt}</pre></div>
     <div className="flex justify-between mt-3 pt-3 border-t border-gray-800">
       <button onClick={()=>setMode("code")} className="px-3 py-2 rounded-lg bg-gray-800 text-gray-400 text-sm flex items-center gap-1"><ChevronLeft size={14}/>Edit Code</button>
@@ -855,34 +931,30 @@ function Evaluator({mid,mname,onScore}){
   </div>);
 
   if(mode==="paste")return(<div className="h-full flex flex-col">
-    <div className="mb-2"><h2 className="text-base font-bold text-white flex items-center gap-2"><FileText size={16}/>Paste AI Response</h2></div>
-    <textarea value={resp} onChange={e=>setResp(e.target.value)} placeholder="Paste the complete AI evaluation here..." className="flex-1 min-h-0 bg-gray-900 border border-gray-700 rounded-xl p-3 text-gray-200 font-mono text-sm resize-none focus:outline-none focus:border-blue-500"/>
+    <div className="mb-2"><h2 className="text-base font-bold text-white flex items-center gap-2"><FileText size={16}/>Paste AI Response</h2><p className="text-gray-500 text-xs">Paste the score and feedback from the AI</p></div>
+    <textarea value={resp} onChange={e=>setResp(e.target.value)} placeholder={"Paste the AI's response here...\n\nExample format:\nSCORE: 88/100\nFEEDBACK: Great work! Your code...\nTIP: Consider adding..."} className="flex-1 min-h-0 bg-gray-900 border border-gray-700 rounded-xl p-3 text-gray-200 font-mono text-sm resize-none focus:outline-none focus:border-blue-500"/>
     <div className="flex justify-between mt-3 pt-3 border-t border-gray-800">
       <button onClick={()=>setMode("prompt")} className="px-3 py-2 rounded-lg bg-gray-800 text-gray-400 text-sm flex items-center gap-1"><ChevronLeft size={14}/>Back</button>
-      <button onClick={submit} disabled={!resp.includes("===EVALUATION")} className="px-5 py-2 rounded-lg bg-green-600 text-white text-sm font-semibold disabled:opacity-30 flex items-center gap-1"><CheckCircle size={14}/>Submit</button>
+      <button onClick={submit} disabled={!resp.match(/SCORE:\s*\d+/i)} className="px-5 py-2 rounded-lg bg-green-600 text-white text-sm font-semibold disabled:opacity-30 flex items-center gap-1"><CheckCircle size={14}/>Submit</button>
     </div>
   </div>);
 
   return(<div className="h-full overflow-auto">
     {result.err?(<div className="bg-red-900/30 border border-red-600/50 rounded-xl p-5">
-      <div className="flex items-center gap-2 text-red-400 font-semibold mb-2"><XCircle size={18}/>Error</div>
+      <div className="flex items-center gap-2 text-red-400 font-semibold mb-2"><XCircle size={18}/>Parse Error</div>
       <p className="text-red-300 text-sm">{result.err}</p>
       <button onClick={()=>{setResult(null);setMode("paste");}} className="mt-3 px-4 py-1.5 rounded-lg bg-red-800 text-white text-sm">Try Again</button>
     </div>):(<>
-      <div className={`rounded-xl p-5 mb-4 text-center ${result.sc>=80?'bg-green-900/30 border border-green-600/40':'bg-yellow-900/30 border border-yellow-600/40'}`}>
-        <div className="text-4xl font-black mb-1" style={{color:result.sc>=80?'#10B981':'#F59E0B'}}>{result.sc}/100</div>
-        <div className={`text-sm font-semibold ${result.sc>=80?'text-green-400':'text-yellow-400'}`}>{result.sc>=80?'🎉 Passed! Module Unlocked!':'💪 Score 80+ to unlock next module'}</div>
+      <div className={`rounded-xl p-5 mb-4 text-center ${result.sc>=PASS_SCORE?'bg-green-900/30 border border-green-600/40':'bg-yellow-900/30 border border-yellow-600/40'}`}>
+        <div className="text-5xl font-black mb-2" style={{color:result.sc>=PASS_SCORE?'#10B981':result.sc>=60?'#F59E0B':'#EF4444'}}>{result.sc}/100</div>
+        <div className="w-full max-w-xs mx-auto h-2 bg-gray-700 rounded-full mb-2"><div className="h-full rounded-full transition-all" style={{width:`${result.sc}%`,background:result.sc>=PASS_SCORE?'#10B981':result.sc>=60?'#F59E0B':'#EF4444'}}/></div>
+        <div className="text-xs text-gray-500 mb-1">{result.sc>=96?'⭐ Excellent Solution':result.sc>=85?'🌟 Great Solution':result.sc>=70?'✅ Working Solution':result.sc>=40?'🔧 Partial Solution':'📝 Needs Work'}</div>
+        <div className={`text-sm font-semibold ${result.sc>=PASS_SCORE?'text-green-400':result.sc>=50?'text-yellow-400':'text-red-400'}`}>{result.sc>=PASS_SCORE?'🎉 Passed! Great work!':result.sc>=50?`💪 Almost there! Need ${PASS_SCORE} to pass`:'📝 Keep practicing! Review the lesson and try again'}</div>
       </div>
-      {result.cats&&Object.entries(result.cats).map(([k,v])=>(
-        <div key={k} className="bg-gray-800/80 rounded-lg p-3 mb-2">
-          <div className="flex justify-between items-center mb-1"><span className="text-xs font-semibold text-gray-300">{k.replace("_"," ")}</span><span className="text-xs font-bold text-blue-400">{v.s}</span></div>
-          <div className="w-full h-1 bg-gray-700 rounded-full"><div className="h-full bg-blue-500 rounded-full" style={{width:`${(v.s/(k==='CORRECTNESS'?40:k==='COMPLETENESS'?25:k==='CODE_QUALITY'?20:15))*100}%`}}/></div>
-          <p className="text-xs text-gray-500 mt-1">{v.f}</p>
-        </div>
-      ))}
-      {result.summary&&<div className="bg-gray-800/80 rounded-lg p-3 mb-2"><div className="text-xs font-semibold text-gray-300 mb-1">Summary</div><p className="text-xs text-gray-400">{result.summary}</p></div>}
-      {result.suggestion&&<div className="bg-blue-900/20 border border-blue-800/40 rounded-lg p-3 mb-2"><div className="text-xs font-semibold text-blue-300 mb-1">💡 Suggestion</div><p className="text-xs text-blue-200/70">{result.suggestion}</p></div>}
-      {result.sc<80&&<button onClick={()=>{setResult(null);setResp("");setMode("code");}} className="w-full mt-3 px-4 py-2.5 rounded-lg bg-yellow-600 text-white text-sm font-semibold flex items-center justify-center gap-2"><RefreshCw size={14}/>Try Again</button>}
+      {result.feedback&&<div className="bg-gray-800/80 rounded-lg p-4 mb-3"><div className="text-xs font-semibold text-gray-300 mb-1.5">📋 Feedback</div><p className="text-sm text-gray-400">{result.feedback}</p></div>}
+      {result.tip&&<div className="bg-blue-900/20 border border-blue-800/40 rounded-lg p-4 mb-3"><div className="text-xs font-semibold text-blue-300 mb-1.5">💡 Tip to Improve</div><p className="text-sm text-blue-200/70">{result.tip}</p></div>}
+      {result.sc>=PASS_SCORE&&onNext&&<button onClick={onNext} className="w-full mt-3 px-4 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold flex items-center justify-center gap-2 hover:bg-blue-500"><ArrowRight size={14}/>Next Module</button>}
+      {result.sc<PASS_SCORE&&<button onClick={()=>{setResult(null);setResp("");setMode("code");}} className="w-full mt-3 px-4 py-2.5 rounded-lg bg-yellow-600 text-white text-sm font-semibold flex items-center justify-center gap-2"><RefreshCw size={14}/>Try Again</button>}
     </>)}
   </div>);
 }
@@ -976,18 +1048,20 @@ function Dashboard({p,onTest,onViewCert}){
         </div>))}
       </div>
     </div>
-    <div className="bg-gray-800/80 rounded-xl p-3 border border-gray-700/50">
-      <h3 className="text-xs font-semibold text-gray-300 mb-2 flex items-center gap-1.5"><Settings size={14}/>Test Run</h3>
-      <p className="text-xs text-gray-500 mb-2">Simulate progress to test the full platform flow.</p>
-      <div className="flex gap-2 flex-wrap">
-        <button onClick={()=>onTest("module")} className="px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-400 text-xs font-medium hover:bg-blue-600/30 border border-blue-600/30">+1 Module</button>
-        <button onClick={()=>onTest("phase")} className="px-3 py-1.5 rounded-lg bg-green-600/20 text-green-400 text-xs font-medium hover:bg-green-600/30 border border-green-600/30">+1 Phase</button>
-        <button onClick={()=>onTest("xp")} className="px-3 py-1.5 rounded-lg bg-purple-600/20 text-purple-400 text-xs font-medium hover:bg-purple-600/30 border border-purple-600/30">+100 XP</button>
-        <button onClick={()=>onTest("ach")} className="px-3 py-1.5 rounded-lg bg-yellow-600/20 text-yellow-400 text-xs font-medium hover:bg-yellow-600/30 border border-yellow-600/30">Achievement</button>
-        <button onClick={()=>onTest("score95")} className="px-3 py-1.5 rounded-lg bg-pink-600/20 text-pink-400 text-xs font-medium hover:bg-pink-600/30 border border-pink-600/30">Score 95</button>
-        <button onClick={()=>onTest("full")} className="px-3 py-1.5 rounded-lg bg-red-600/20 text-red-400 text-xs font-medium hover:bg-red-600/30 border border-red-600/30">🚀 Full Demo</button>
+    <details className="bg-gray-800/80 rounded-xl border border-gray-700/50">
+      <summary className="p-3 text-xs font-semibold text-gray-500 cursor-pointer flex items-center gap-1.5 select-none hover:text-gray-400"><Settings size={14}/>Dev Tools (click to expand)</summary>
+      <div className="px-3 pb-3">
+        <p className="text-xs text-gray-600 mb-2">Simulate progress to test the platform flow.</p>
+        <div className="flex gap-2 flex-wrap">
+          <button onClick={()=>onTest("module")} className="px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-400 text-xs font-medium hover:bg-blue-600/30 border border-blue-600/30">+1 Module</button>
+          <button onClick={()=>onTest("phase")} className="px-3 py-1.5 rounded-lg bg-green-600/20 text-green-400 text-xs font-medium hover:bg-green-600/30 border border-green-600/30">+1 Phase</button>
+          <button onClick={()=>onTest("xp")} className="px-3 py-1.5 rounded-lg bg-purple-600/20 text-purple-400 text-xs font-medium hover:bg-purple-600/30 border border-purple-600/30">+100 XP</button>
+          <button onClick={()=>onTest("ach")} className="px-3 py-1.5 rounded-lg bg-yellow-600/20 text-yellow-400 text-xs font-medium hover:bg-yellow-600/30 border border-yellow-600/30">Achievement</button>
+          <button onClick={()=>onTest("score95")} className="px-3 py-1.5 rounded-lg bg-pink-600/20 text-pink-400 text-xs font-medium hover:bg-pink-600/30 border border-pink-600/30">Score 95</button>
+          <button onClick={()=>onTest("full")} className="px-3 py-1.5 rounded-lg bg-red-600/20 text-red-400 text-xs font-medium hover:bg-red-600/30 border border-red-600/30">Full Demo</button>
+        </div>
       </div>
-    </div>
+    </details>
   </div>);
 }
 
@@ -1025,7 +1099,7 @@ export default function App(){
 
   const handleScore=(mid,sc)=>updP(np=>{
     np.sc={...(np.sc||{}),[mid]:Math.max(sc,(np.sc||{})[mid]||0)};
-    if(sc>=80&&!(np.cm||[]).includes(mid)){np.cm=[...(np.cm||[]),mid];np.xp=(np.xp||0)+50;}
+    if(sc>=70&&!(np.cm||[]).includes(mid)){np.cm=[...(np.cm||[]),mid];np.xp=(np.xp||0)+50;}
     PHASES.forEach(ph=>{if(ph.modules.every(m=>(np.cm||[]).includes(m.id))&&!(np.up||[]).includes(ph.id+1)&&ph.id<8){np.up=[...(np.up||[1]),ph.id+1];np.xp+=200;}});
   });
 
@@ -1101,7 +1175,11 @@ export default function App(){
                 <button onClick={()=>setCertView(null)} className="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-400 text-sm flex items-center gap-1"><ChevronLeft size={14}/>Back to Dashboard</button>
                 <h2 className="text-lg font-bold text-white">Your Certificate</h2>
               </div>
-              <Certificate tier={certView} name="NeuraPath Learner" date={new Date().toLocaleDateString()} modules={(p.cm||[]).length} avgScore={avgScore()}/>
+              <div className="flex items-center gap-2 mb-4 max-w-lg mx-auto w-full">
+                <label className="text-xs text-gray-400 shrink-0">Your Name:</label>
+                <input value={p.name||""} onChange={e=>save({...p,name:e.target.value})} placeholder="Enter your name for the certificate" className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-blue-500"/>
+              </div>
+              <Certificate tier={certView} name={p.name||"NeuraPath Learner"} date={new Date().toLocaleDateString()} modules={(p.cm||[]).length} avgScore={avgScore()}/>
               <p className="text-center text-xs text-gray-500 mt-4">Right-click the certificate to save as image, or take a screenshot to share.</p>
             </div>
           )}
@@ -1116,15 +1194,47 @@ export default function App(){
               {!lessonDone&&curMod.hasVisual?(
                 <VisualLesson moduleId={curMod.id} onComplete={()=>{setLessonDone(true);updP(np=>{np.xp=(np.xp||0)+10;});showToast("+10 XP — Lesson complete!");}}/>
               ):!lessonDone?(
-                <div className="flex-1 flex flex-col items-center justify-center text-center">
-                  <div className="text-5xl mb-3">{curMod.type==="project"?"📊":"📖"}</div>
-                  <h2 className="text-lg font-bold text-gray-200 mb-1">{curMod.title}</h2>
-                  <p className="text-gray-500 text-sm mb-4 max-w-md">{curMod.type==="project"?"Hands-on project with real Indian government data. Complete it and evaluate with any AI.":"Visual lesson coming in next sprint. Proceed to exercise."}</p>
-                  {curMod.hasEx?<button onClick={()=>setLessonDone(true)} className="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-500 flex items-center gap-2">{curMod.type==="project"?<><Play size={16}/>Start Project</>:<><Code size={16}/>Go to Exercise</>}</button>
-                  :<button onClick={()=>{completeModule(curMod.id);showToast("+25 XP ✓");}} className="px-5 py-2.5 rounded-lg bg-green-600 text-white text-sm font-semibold hover:bg-green-500 flex items-center gap-2"><CheckCircle size={16}/>Mark Complete</button>}
+                <div className="flex-1 overflow-auto">
+                  <div className="max-w-2xl mx-auto">
+                    <div className="text-center mb-6">
+                      <div className="text-5xl mb-3">{curMod.type==="project"?"📊":"📖"}</div>
+                      <h2 className="text-xl font-bold text-gray-200 mb-2">{curMod.title}</h2>
+                    </div>
+                    {MODULE_INFO[curMod.id]&&(<>
+                      <div className="bg-gray-800/60 rounded-xl p-4 mb-4">
+                        <h3 className="text-sm font-semibold text-blue-400 mb-2 flex items-center gap-1.5"><BookOpen size={14}/>What is this?</h3>
+                        <p className="text-gray-300 text-sm leading-relaxed">{MODULE_INFO[curMod.id].d}</p>
+                      </div>
+                      <div className="bg-gray-800/60 rounded-xl p-4 mb-4">
+                        <h3 className="text-sm font-semibold text-purple-400 mb-3 flex items-center gap-1.5"><ExternalLink size={14}/>Learn More</h3>
+                        <div className="grid gap-2">
+                          {MODULE_INFO[curMod.id].links.map((lk,i)=>(<a key={i} href={lk.u} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-900/60 hover:bg-gray-700/60 transition-colors text-sm text-gray-300 hover:text-white"><ExternalLink size={12} className="text-gray-500 shrink-0"/><span>{lk.n}</span></a>))}
+                        </div>
+                      </div>
+                    </>)}
+                    <div className="bg-gray-800/60 rounded-xl p-4 mb-4">
+                      <h3 className="text-sm font-semibold text-green-400 mb-3 flex items-center gap-1.5"><Play size={14}/>Practice Environment</h3>
+                      <p className="text-gray-500 text-xs mb-3">Test your code before submitting:</p>
+                      <div className="flex gap-2 flex-wrap">
+                        <a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-green-900/30 border border-green-700/40 text-green-400 text-sm hover:bg-green-900/50 transition-colors"><Play size={14}/>Online Python Compiler</a>
+                        <a href="https://colab.research.google.com/#create=true" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-yellow-900/30 border border-yellow-700/40 text-yellow-400 text-sm hover:bg-yellow-900/50 transition-colors"><ExternalLink size={14}/>Google Colab Notebook</a>
+                      </div>
+                    </div>
+                    <div className="text-center pt-2">
+                      {curMod.hasEx?<button onClick={()=>setLessonDone(true)} className="px-6 py-3 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-500 flex items-center gap-2 mx-auto shadow-lg shadow-blue-600/20">{curMod.type==="project"?<><Play size={16}/>Start Project</>:<><Code size={16}/>Start Exercise</>}</button>
+                      :<button onClick={()=>{completeModule(curMod.id);showToast("+25 XP ✓");}} className="px-6 py-3 rounded-xl bg-green-600 text-white text-sm font-semibold hover:bg-green-500 flex items-center gap-2 mx-auto shadow-lg shadow-green-600/20"><CheckCircle size={16}/>Mark Complete</button>}
+                    </div>
+                  </div>
                 </div>
               ):(
-                <Evaluator mid={curMod.id} mname={curMod.title} onScore={sc=>{handleScore(curMod.id,sc);if(sc>=80)showToast(`✅ ${curMod.title} — ${sc}/100`);}}/>
+                <Evaluator mid={curMod.id} mname={curMod.title} onBack={()=>setLessonDone(false)} onNext={()=>{
+                  const phase=PHASES.find(ph=>ph.modules.some(m=>m.id===curMod.id));
+                  if(phase){const idx=phase.modules.findIndex(m=>m.id===curMod.id);
+                    if(idx<phase.modules.length-1){openMod(phase.modules[idx+1],phase.id);}
+                    else{const nextP=PHASES.find(ph=>ph.id===phase.id+1&&(p.up||[]).includes(ph.id));
+                      if(nextP&&nextP.modules.length)openMod(nextP.modules[0],nextP.id);
+                      else showToast("🎉 Phase complete! Unlock the next phase to continue.");}}
+                }} onScore={sc=>{handleScore(curMod.id,sc);if(sc>=70)showToast(`✅ ${curMod.title} — ${sc}/100`);}}/>
               )}
             </div>
           )}
