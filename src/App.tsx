@@ -6,34 +6,34 @@ const PHASES=[
 {id:1,title:"Python for ML",icon:"🐍",color:"#3B82F6",modules:[
 {id:"1.1",title:"NumPy Fundamentals",type:"lesson",hasEx:true,hasVisual:true},
 {id:"1.2",title:"NumPy Advanced",type:"lesson",hasEx:true},
-{id:"1.3",title:"Pandas DataFrames",type:"lesson",hasEx:true},
+{id:"1.3",title:"Pandas DataFrames",type:"lesson",hasEx:true,hasVisual:true},
 {id:"1.4",title:"Pandas Wrangling",type:"lesson",hasEx:true},
-{id:"1.5",title:"Missing Data & Outliers",type:"lesson",hasEx:true},
-{id:"1.6",title:"Matplotlib & Seaborn",type:"lesson",hasEx:true},
+{id:"1.5",title:"Missing Data & Outliers",type:"lesson",hasEx:true,hasVisual:true},
+{id:"1.6",title:"Matplotlib & Seaborn",type:"lesson",hasEx:true,hasVisual:true},
 {id:"1.7",title:"Comprehensions & Generators",type:"lesson",hasEx:true},
 {id:"1.8",title:"OOP for ML",type:"lesson",hasEx:true},
 {id:"1.9",title:"🧪 Project: Census EDA",type:"project",hasEx:true},
 ]},
 {id:2,title:"Math for ML",icon:"🧮",color:"#8B5CF6",modules:[
 {id:"2.1",title:"Vectors & Matrices",type:"lesson",hasEx:true,hasVisual:true},
-{id:"2.2",title:"Matrix Multiplication",type:"lesson",hasEx:true},
+{id:"2.2",title:"Matrix Multiplication",type:"lesson",hasEx:true,hasVisual:true},
 {id:"2.3",title:"Eigenvalues & PCA Preview",type:"lesson",hasEx:false},
-{id:"2.4",title:"Derivatives as Slopes",type:"lesson",hasEx:false},
+{id:"2.4",title:"Derivatives as Slopes",type:"lesson",hasEx:false,hasVisual:true},
 {id:"2.5",title:"Gradient Descent",type:"lesson",hasEx:true,hasVisual:true},
-{id:"2.6",title:"Probability Distributions",type:"lesson",hasEx:true},
-{id:"2.7",title:"Bayes' Theorem",type:"lesson",hasEx:true},
+{id:"2.6",title:"Probability Distributions",type:"lesson",hasEx:true,hasVisual:true},
+{id:"2.7",title:"Bayes' Theorem",type:"lesson",hasEx:true,hasVisual:true},
 {id:"2.8",title:"Statistics for ML",type:"lesson",hasEx:true},
 {id:"2.9",title:"🧪 Project: IMD Weather",type:"project",hasEx:true},
 ]},
 {id:3,title:"ML Fundamentals",icon:"⚙️",color:"#10B981",modules:[
-{id:"3.1",title:"What is ML?",type:"lesson",hasEx:false},
-{id:"3.2",title:"ML Workflow",type:"lesson",hasEx:false},
+{id:"3.1",title:"What is ML?",type:"lesson",hasEx:false,hasVisual:true},
+{id:"3.2",title:"ML Workflow",type:"lesson",hasEx:false,hasVisual:true},
 {id:"3.3",title:"Train/Test Split",type:"lesson",hasEx:true,hasVisual:true},
 {id:"3.4",title:"Linear Regression",type:"lesson",hasEx:true,hasVisual:true},
 {id:"3.5",title:"Logistic Regression",type:"lesson",hasEx:true,hasVisual:true},
 {id:"3.6",title:"Decision Trees",type:"lesson",hasEx:true,hasVisual:true},
 {id:"3.7",title:"Random Forests",type:"lesson",hasEx:true,hasVisual:true},
-{id:"3.8",title:"SVM",type:"lesson",hasEx:true},
+{id:"3.8",title:"SVM",type:"lesson",hasEx:true,hasVisual:true},
 {id:"3.9",title:"KNN",type:"lesson",hasEx:true,hasVisual:true},
 {id:"3.10",title:"K-Means Clustering",type:"lesson",hasEx:true,hasVisual:true},
 {id:"3.11",title:"Model Evaluation",type:"lesson",hasEx:true,hasVisual:true},
@@ -52,18 +52,18 @@ const PHASES=[
 {id:"5.1",title:"The Perceptron",type:"lesson",hasEx:true,hasVisual:true},
 {id:"5.2",title:"Activation Functions",type:"lesson",hasEx:false,hasVisual:true},
 {id:"5.3",title:"Multi-Layer Networks",type:"lesson",hasEx:true,hasVisual:true},
-{id:"5.4",title:"Backpropagation",type:"lesson",hasEx:true},
+{id:"5.4",title:"Backpropagation",type:"lesson",hasEx:true,hasVisual:true},
 {id:"5.5",title:"NN from Scratch",type:"lesson",hasEx:true},
 {id:"5.6",title:"TensorFlow / Keras",type:"lesson",hasEx:true},
 {id:"5.7",title:"CNNs",type:"lesson",hasEx:true,hasVisual:true},
 {id:"5.8",title:"Transfer Learning",type:"lesson",hasEx:true},
-{id:"5.9",title:"RNNs & LSTM",type:"lesson",hasEx:true},
+{id:"5.9",title:"RNNs & LSTM",type:"lesson",hasEx:true,hasVisual:true},
 {id:"5.10",title:"🧪 Project: Image Classifier",type:"project",hasEx:true},
 ]},
 {id:6,title:"NLP & Transformers",icon:"📝",color:"#06B6D4",modules:[
-{id:"6.1",title:"Text Preprocessing",type:"lesson",hasEx:true},
+{id:"6.1",title:"Text Preprocessing",type:"lesson",hasEx:true,hasVisual:true},
 {id:"6.2",title:"TF-IDF & BoW",type:"lesson",hasEx:true},
-{id:"6.3",title:"Word Embeddings",type:"lesson",hasEx:true},
+{id:"6.3",title:"Word Embeddings",type:"lesson",hasEx:true,hasVisual:true},
 {id:"6.4",title:"Attention Mechanism",type:"lesson",hasEx:true,hasVisual:true},
 {id:"6.5",title:"Transformer Architecture",type:"lesson",hasEx:true,hasVisual:true},
 {id:"6.6",title:"BERT & GPT",type:"lesson",hasEx:true},
@@ -73,7 +73,7 @@ const PHASES=[
 {id:7,title:"LLMs & AI Agents",icon:"🤖",color:"#F97316",modules:[
 {id:"7.1",title:"LLM Fundamentals",type:"lesson",hasEx:false},
 {id:"7.2",title:"LLM APIs",type:"lesson",hasEx:true},
-{id:"7.3",title:"Embeddings & Vector DBs",type:"lesson",hasEx:true},
+{id:"7.3",title:"Embeddings & Vector DBs",type:"lesson",hasEx:true,hasVisual:true},
 {id:"7.4",title:"RAG Pipelines",type:"lesson",hasEx:true,hasVisual:true},
 {id:"7.5",title:"AI Agent Design",type:"lesson",hasEx:true},
 {id:"7.6",title:"Fine-Tuning (LoRA)",type:"lesson",hasEx:true},
@@ -840,6 +840,432 @@ function VisualLesson({moduleId, onComplete}){
           <div className="text-xs text-gray-400 mt-1">{ragSteps[ragStep].desc}</div>
         </div>
         <p className="text-xs text-gray-500 text-center max-w-md">RAG solves the "LLMs don't know your private data" problem — retrieve relevant docs and include them in the prompt.</p>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 1.3 Pandas DataFrames ───
+  if(moduleId==="1.3"){
+    const [op,setOp]=useState("none");
+    const data=[{n:"Rahul",a:25,c:"Mumbai",s:72000},{n:"Priya",a:30,c:"Delhi",s:85000},{n:"Amit",a:22,c:"Mumbai",s:45000},{n:"Sneha",a:28,c:"Bangalore",s:92000},{n:"Vikram",a:35,c:"Delhi",s:68000}];
+    const filtered=op==="filter"?data.filter(r=>r.c==="Mumbai"):op==="sort"?[...data].sort((a,b)=>b.s-a.s):op==="group"?[{n:"Bangalore",a:1,c:"Avg",s:92000},{n:"Delhi",a:2,c:"Avg",s:76500},{n:"Mumbai",a:2,c:"Avg",s:58500}]:data;
+    const steps=[{t:"Pandas DataFrames",s:"Your data as a spreadsheet in Python",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex gap-2 flex-wrap justify-center">{[{k:"none",l:"Original"},{k:"filter",l:"Filter: Mumbai"},{k:"sort",l:"Sort by Salary ↓"},{k:"group",l:"Group by City"}].map(b=><button key={b.k} onClick={()=>setOp(b.k)} className={`px-3 py-1.5 rounded-lg text-xs ${op===b.k?'bg-blue-600 text-white':'bg-gray-700 text-gray-400'}`}>{b.l}</button>)}</div>
+        <div className="bg-gray-800 rounded-xl overflow-hidden">
+          <table className="text-xs"><thead><tr className="bg-gray-700">{(op==="group"?["City","Count","","Avg Salary"]:["Name","Age","City","Salary"]).map(h=><th key={h} className="px-4 py-2 text-gray-300 font-semibold">{h}</th>)}</tr></thead>
+          <tbody>{filtered.map((r,i)=><tr key={i} className="border-t border-gray-700/50 hover:bg-gray-700/30"><td className="px-4 py-2 text-blue-300">{r.n}</td><td className="px-4 py-2 text-gray-300">{r.a}</td><td className="px-4 py-2 text-green-300">{r.c}</td><td className="px-4 py-2 text-yellow-300">₹{r.s.toLocaleString()}</td></tr>)}</tbody></table>
+        </div>
+        <div className="bg-gray-800/80 rounded-xl p-3 font-mono text-xs w-full max-w-md">
+          {op==="none"&&<>df = pd.DataFrame(data) <span className="text-gray-500"># 5 rows × 4 cols</span></>}
+          {op==="filter"&&<>df[df[<span className="text-green-300">'City'</span>] == <span className="text-yellow-300">'Mumbai'</span>]</>}
+          {op==="sort"&&<>df.sort_values(<span className="text-green-300">'Salary'</span>, ascending=<span className="text-yellow-300">False</span>)</>}
+          {op==="group"&&<>df.groupby(<span className="text-green-300">'City'</span>)[<span className="text-green-300">'Salary'</span>].mean()</>}
+        </div>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 1.5 Missing Data & Outliers ───
+  if(moduleId==="1.5"){
+    const [strategy,setStrategy]=useState("raw");
+    const raw=[25,null,30,28,null,35,120,22,27,null];
+    const mean=Math.round([25,30,28,35,22,27].reduce((a,b)=>a+b,0)/6);
+    const filled=strategy==="mean"?raw.map(v=>v===null?mean:v>100?mean:v):strategy==="drop"?raw.filter(v=>v!==null&&v<=100):strategy==="cap"?raw.map(v=>v===null?null:v>40?40:v):raw;
+    const steps=[{t:"Missing Data & Outliers",s:"Real data is messy — learn to clean it",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex gap-2 flex-wrap justify-center">{[{k:"raw",l:"Raw Data"},{k:"mean",l:"Fill Mean + Fix Outlier"},{k:"drop",l:"Drop Bad Rows"},{k:"cap",l:"Cap at 40"}].map(b=><button key={b.k} onClick={()=>setStrategy(b.k)} className={`px-3 py-1.5 rounded-lg text-xs ${strategy===b.k?'bg-purple-600 text-white':'bg-gray-700 text-gray-400'}`}>{b.l}</button>)}</div>
+        <div className="flex gap-1 items-end justify-center h-40">
+          {filled.map((v,i)=><div key={i} className="flex flex-col items-center gap-1">
+            <div className={`w-8 rounded-t transition-all ${v===null?'bg-red-500/30 border-2 border-dashed border-red-500':v>100?'bg-red-500':v===mean&&strategy==="mean"?'bg-green-500':'bg-blue-500'}`} style={{height:v===null?40:`${(v/140)*140}px`}}/>
+            <span className={`text-xs ${v===null?'text-red-400':v>100?'text-red-400':'text-gray-400'}`}>{v===null?"NaN":v}</span>
+          </div>)}
+        </div>
+        <div className="flex gap-3 text-xs">
+          <span className="flex items-center gap-1"><div className="w-3 h-3 bg-red-500/30 border border-dashed border-red-500 rounded"/><span className="text-gray-400">Missing (NaN)</span></span>
+          <span className="flex items-center gap-1"><div className="w-3 h-3 bg-red-500 rounded"/><span className="text-gray-400">Outlier (120)</span></span>
+          {strategy==="mean"&&<span className="flex items-center gap-1"><div className="w-3 h-3 bg-green-500 rounded"/><span className="text-gray-400">Filled ({mean})</span></span>}
+        </div>
+        <div className="bg-gray-800/80 rounded-xl p-3 font-mono text-xs w-full max-w-md">
+          {strategy==="raw"&&<><span className="text-gray-500"># NaN = missing, 120 = outlier</span><br/>df[<span className="text-green-300">'age'</span>].isna().sum() <span className="text-gray-500"># → 3 missing</span></>}
+          {strategy==="mean"&&<>df[<span className="text-green-300">'age'</span>].fillna(df[<span className="text-green-300">'age'</span>].mean())</>}
+          {strategy==="drop"&&<>df.dropna().query(<span className="text-green-300">'age &lt;= 40'</span>)</>}
+          {strategy==="cap"&&<>df[<span className="text-green-300">'age'</span>].clip(upper=<span className="text-yellow-300">40</span>)</>}
+        </div>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 1.6 Matplotlib & Seaborn ───
+  if(moduleId==="1.6"){
+    const [chart,setChart]=useState(0);
+    const vals=[30,55,45,80,65,40,70];const labels=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+    const colors=["#3B82F6","#8B5CF6","#10B981","#F59E0B"];
+    const steps=[{t:"Data Visualization",s:"Same data, different stories",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex gap-2">{["Bar Chart","Line Chart","Scatter","Area"].map((n,i)=><button key={i} onClick={()=>setChart(i)} className={`px-3 py-1.5 rounded-lg text-xs ${chart===i?'text-white':'bg-gray-700 text-gray-400'}`} style={chart===i?{background:colors[i]}:{}}>{n}</button>)}</div>
+        <svg viewBox="0 0 350 200" className="w-full max-w-md bg-gray-800/50 rounded-xl">
+          {Array.from({length:5},(_,i)=><><line x1="40" y1={20+i*40} x2="340" y2={20+i*40} stroke="#374151" strokeWidth="0.5"/><text x="35" y={24+i*40} fill="#666" fontSize="8" textAnchor="end">{100-i*25}</text></>)}
+          {chart===0&&vals.map((v,i)=><rect key={i} x={50+i*42} y={180-v*1.6} width="30" height={v*1.6} rx="3" fill={colors[0]} opacity="0.8"/>)}
+          {chart===1&&<polyline points={vals.map((v,i)=>`${65+i*42},${180-v*1.6}`).join(" ")} fill="none" stroke={colors[1]} strokeWidth="3" strokeLinejoin="round"/>}
+          {chart===1&&vals.map((v,i)=><circle key={i} cx={65+i*42} cy={180-v*1.6} r="4" fill={colors[1]}/>)}
+          {chart===2&&vals.map((v,i)=><circle key={i} cx={65+i*42} cy={180-v*1.6} r={5+Math.random()*3} fill={colors[2]} opacity="0.7"/>)}
+          {chart===3&&<><path d={`M 65 180 ${vals.map((v,i)=>`L ${65+i*42} ${180-v*1.6}`).join(" ")} L ${65+6*42} 180 Z`} fill={colors[3]} opacity="0.2"/><polyline points={vals.map((v,i)=>`${65+i*42},${180-v*1.6}`).join(" ")} fill="none" stroke={colors[3]} strokeWidth="2"/></>}
+          {labels.map((l,i)=><text key={i} x={65+i*42} y="195" fill="#888" fontSize="8" textAnchor="middle">{l}</text>)}
+        </svg>
+        <div className="bg-gray-800/80 rounded-xl p-3 font-mono text-xs w-full max-w-md">
+          {chart===0&&<>plt.<span className="text-blue-300">bar</span>(days, values, color=<span className="text-green-300">'steelblue'</span>)</>}
+          {chart===1&&<>plt.<span className="text-purple-300">plot</span>(days, values, marker=<span className="text-green-300">'o'</span>)</>}
+          {chart===2&&<>plt.<span className="text-green-300">scatter</span>(days, values, s=<span className="text-yellow-300">100</span>)</>}
+          {chart===3&&<>plt.<span className="text-yellow-300">fill_between</span>(days, values, alpha=<span className="text-yellow-300">0.3</span>)</>}
+        </div>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 2.2 Matrix Multiplication ───
+  if(moduleId==="2.2"){
+    const [selR,setSelR]=useState(0);const[selC,setSelC]=useState(0);
+    const A=[[1,2,3],[4,5,6]];const B=[[7,10],[8,11],[9,12]];
+    const result=A.map(r=>B[0].map((_,j)=>r.reduce((s,v,k)=>s+v*B[k][j],0)));
+    const steps=[{t:"Matrix Multiplication",s:"Row × Column = One output value",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex items-center gap-4 flex-wrap justify-center">
+          <div className="text-center"><div className="text-xs text-gray-500 mb-1">A (2×3)</div>
+            <div className="flex flex-col gap-1">{A.map((r,i)=><div key={i} className="flex gap-1">{r.map((v,j)=><div key={j} className={`w-10 h-10 rounded flex items-center justify-center text-sm font-bold transition-all ${selR===i?'bg-blue-600 text-white ring-2 ring-blue-400':'bg-gray-700 text-gray-300'}`}>{v}</div>)}</div>)}</div>
+          </div>
+          <div className="text-xl text-yellow-400">×</div>
+          <div className="text-center"><div className="text-xs text-gray-500 mb-1">B (3×2)</div>
+            <div className="flex flex-col gap-1">{B.map((r,i)=><div key={i} className="flex gap-1">{r.map((v,j)=><div key={j} className={`w-10 h-10 rounded flex items-center justify-center text-sm font-bold transition-all ${selC===j?'bg-purple-600 text-white ring-2 ring-purple-400':'bg-gray-700 text-gray-300'}`}>{v}</div>)}</div>)}</div>
+          </div>
+          <div className="text-xl text-yellow-400">=</div>
+          <div className="text-center"><div className="text-xs text-gray-500 mb-1">Result (2×2)</div>
+            <div className="flex flex-col gap-1">{result.map((r,i)=><div key={i} className="flex gap-1">{r.map((v,j)=><div key={j} onClick={()=>{setSelR(i);setSelC(j);}} className={`w-10 h-10 rounded flex items-center justify-center text-sm font-bold cursor-pointer transition-all ${selR===i&&selC===j?'bg-green-600 text-white ring-2 ring-green-400':'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}>{v}</div>)}</div>)}</div>
+          </div>
+        </div>
+        <div className="bg-gray-800 rounded-xl p-3 text-center">
+          <div className="text-xs text-gray-400 mb-1">Result[{selR}][{selC}] =</div>
+          <div className="text-sm font-mono">{A[selR].map((v,k)=><span key={k}>{k>0?" + ":""}<span className="text-blue-400">{v}</span>×<span className="text-purple-400">{B[k][selC]}</span></span>)} = <span className="text-green-400 font-bold">{result[selR][selC]}</span></div>
+        </div>
+        <p className="text-xs text-gray-500">Click any result cell to see how it's computed: <span className="text-blue-400">row</span> × <span className="text-purple-400">column</span></p>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 2.4 Derivatives as Slopes ───
+  if(moduleId==="2.4"){
+    const [xPos,setXPos]=useState(2);
+    const f=x=>x*x;const df=x=>2*x;
+    const slope=df(xPos);const yPos=f(xPos);
+    const steps=[{t:"Derivatives = Slopes",s:"The derivative tells you how steep the curve is at any point",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <svg viewBox="0 0 300 250" className="w-full max-w-sm bg-gray-800/50 rounded-xl">
+          {Array.from({length:7},(_,i)=><line key={i} x1={i*50} y1="0" x2={i*50} y2="250" stroke="#374151" strokeWidth="0.5"/>)}
+          <path d={Array.from({length:61},(_,i)=>{const x=-3+i*0.1;const sx=150+x*40;const sy=220-f(x)*20;return(i===0?"M":"L")+` ${sx} ${Math.max(5,sy)}`;}).join(" ")} fill="none" stroke="#8B5CF6" strokeWidth="2.5"/>
+          {(()=>{const cx=150+xPos*40;const cy=220-yPos*20;const dx=50;return<line x1={cx-dx} y1={cy+slope*dx*0.5} x2={cx+dx} y2={cy-slope*dx*0.5} stroke="#F59E0B" strokeWidth="2" strokeDasharray="4"/>;})()}
+          <circle cx={150+xPos*40} cy={220-yPos*20} r="6" fill="#EF4444" stroke="white" strokeWidth="2"/>
+          <text x={150+xPos*40} y={220-yPos*20-12} fill="white" fontSize="9" textAnchor="middle">({xPos.toFixed(1)}, {yPos.toFixed(1)})</text>
+        </svg>
+        <div className="text-center"><div className="text-xs text-gray-400 mb-1">Move point along f(x) = x²</div>
+          <input type="range" min="-2.5" max="2.5" step="0.1" value={xPos} onChange={e=>setXPos(+e.target.value)} className="w-48"/>
+        </div>
+        <div className="grid grid-cols-3 gap-3 text-center text-xs">
+          <div className="bg-gray-800 rounded-lg p-2"><div className="text-gray-500">f(x) = x²</div><div className="text-purple-400 font-bold text-lg">{yPos.toFixed(1)}</div></div>
+          <div className="bg-gray-800 rounded-lg p-2"><div className="text-gray-500">f'(x) = 2x</div><div className="text-yellow-400 font-bold text-lg">{slope.toFixed(1)}</div></div>
+          <div className="bg-gray-800 rounded-lg p-2"><div className="text-gray-500">Slope</div><div className={`font-bold text-lg ${slope>0?'text-green-400':slope<0?'text-red-400':'text-gray-400'}`}>{slope>0?"↗ Rising":slope<0?"↘ Falling":"→ Flat"}</div></div>
+        </div>
+        <p className="text-xs text-gray-500 text-center max-w-md">The <span className="text-yellow-400">tangent line</span> shows the slope at each point. In ML, gradients tell us which direction to adjust weights.</p>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 2.6 Probability Distributions ───
+  if(moduleId==="2.6"){
+    const [mu,setMu]=useState(0);const[sig,setSig]=useState(1);
+    const gauss=(x,m,s)=>(1/(s*Math.sqrt(2*Math.PI)))*Math.exp(-0.5*((x-m)/s)**2);
+    const steps=[{t:"Probability Distributions",s:"The bell curve — foundation of statistics and ML",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <svg viewBox="0 0 400 180" className="w-full max-w-lg bg-gray-800/50 rounded-xl">
+          <line x1="20" y1="160" x2="380" y2="160" stroke="#4B5563" strokeWidth="1"/>
+          <line x1="200" y1="10" x2="200" y2="160" stroke="#374151" strokeWidth="0.5" strokeDasharray="3"/>
+          {(()=>{const pts=Array.from({length:81},(_,i)=>{const x=-4+i*0.1;const y=gauss(x,mu,sig);const sx=200+x*40;const sy=160-y*300;return`${sx},${Math.max(10,sy)}`;});return<><polygon points={`20,160 ${pts.join(" ")} 380,160`} fill="#8B5CF6" opacity="0.2"/><polyline points={pts.join(" ")} fill="none" stroke="#8B5CF6" strokeWidth="2.5"/></>;})()}
+          <line x1={200+mu*40} y1="10" x2={200+mu*40} y2="160" stroke="#F59E0B" strokeWidth="1.5" strokeDasharray="4"/>
+          <text x={200+mu*40} y="175" fill="#F59E0B" fontSize="9" textAnchor="middle">μ={mu}</text>
+          {[-1,1].map(d=><line key={d} x1={200+(mu+d*sig)*40} y1="20" x2={200+(mu+d*sig)*40} y2="160" stroke="#10B981" strokeWidth="1" strokeDasharray="3" opacity="0.5"/>)}
+        </svg>
+        <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
+          <div className="text-center"><div className="text-xs text-yellow-400 mb-1">Mean (μ): {mu}</div><input type="range" min="-2" max="2" step="0.5" value={mu} onChange={e=>setMu(+e.target.value)} className="w-full"/></div>
+          <div className="text-center"><div className="text-xs text-green-400 mb-1">Std Dev (σ): {sig}</div><input type="range" min="0.3" max="2.5" step="0.1" value={sig} onChange={e=>setSig(+e.target.value)} className="w-full"/></div>
+        </div>
+        <div className="flex gap-4 text-xs text-gray-400"><span><span className="text-yellow-400">μ</span> shifts the center</span><span><span className="text-green-400">σ</span> controls the spread</span><span>68% of data is within ±1σ</span></div>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 2.7 Bayes' Theorem ───
+  if(moduleId==="2.7"){
+    const [prior,setPrior]=useState(1);
+    const sensitivity=0.95;const falsePos=0.05;
+    const pDisease=prior/100;const pPos=pDisease*sensitivity+(1-pDisease)*falsePos;const posterior=pDisease*sensitivity/pPos;
+    const steps=[{t:"Bayes' Theorem",s:"Update beliefs with new evidence",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="text-sm text-gray-400 text-center max-w-md mb-1">A medical test is 95% accurate. If you test <span className="text-green-400">positive</span>, what's the <em>actual</em> probability you're sick?</div>
+        <div className="text-center"><div className="text-xs text-gray-400 mb-1">Disease prevalence: {prior}%</div><input type="range" min="0.1" max="20" step="0.1" value={prior} onChange={e=>setPrior(+e.target.value)} className="w-56"/></div>
+        <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+          <div className="bg-gray-800 rounded-xl p-3 text-center"><div className="text-xs text-gray-500">Prior P(sick)</div><div className="text-lg font-bold text-blue-400">{prior}%</div></div>
+          <div className="bg-gray-800 rounded-xl p-3 text-center"><div className="text-xs text-gray-500">Test Accuracy</div><div className="text-lg font-bold text-yellow-400">95%</div></div>
+          <div className="bg-gray-800 rounded-xl p-3 text-center border-2" style={{borderColor:posterior>0.5?"#10B981":"#EF4444"}}><div className="text-xs text-gray-500">P(sick|positive)</div><div className="text-lg font-bold" style={{color:posterior>0.5?"#10B981":"#EF4444"}}>{(posterior*100).toFixed(1)}%</div></div>
+        </div>
+        <div className="w-full max-w-md bg-gray-800 rounded-lg p-2"><div className="flex h-6 rounded overflow-hidden"><div className="bg-green-600 transition-all flex items-center justify-center text-xs text-white font-bold" style={{width:`${posterior*100}%`}}>{(posterior*100).toFixed(0)}%</div><div className="bg-red-600/40 flex-1 flex items-center justify-center text-xs text-red-300">False +</div></div></div>
+        <div className="bg-gray-800/80 rounded-xl p-3 font-mono text-xs max-w-md w-full">P(A|B) = P(B|A) × P(A) / P(B)</div>
+        <p className="text-xs text-gray-500 text-center max-w-md">{prior<=2?"😮 Even with a 95% accurate test, a rare disease means most positives are false alarms!":"As the disease becomes more common, positive tests become more reliable."}</p>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 3.1 What is ML? ───
+  if(moduleId==="3.1"){
+    const [cat,setCat]=useState(0);
+    const cats=[
+      {name:"Supervised",icon:"🏷️",color:"#3B82F6",desc:"Learn from labeled examples (input → correct output). Like learning from a teacher.",examples:["Spam detection","Price prediction","Image classification"]},
+      {name:"Unsupervised",icon:"🔍",color:"#10B981",desc:"Find hidden patterns in data without labels. Like sorting a mixed pile of items.",examples:["Customer segmentation","Anomaly detection","Topic modeling"]},
+      {name:"Reinforcement",icon:"🎮",color:"#F59E0B",desc:"Learn by trial and error with rewards/penalties. Like training a dog with treats.",examples:["Game playing (AlphaGo)","Robot navigation","Ad placement"]}
+    ];
+    const steps=[{t:"What is Machine Learning?",s:"Teaching computers to learn from data",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex gap-3 mb-2">{cats.map((c,i)=><button key={i} onClick={()=>setCat(i)} className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${cat===i?'text-white scale-105 shadow-lg':'bg-gray-800 text-gray-400 hover:bg-gray-700'}`} style={cat===i?{background:c.color}:{}}><div className="text-2xl mb-1">{c.icon}</div>{c.name}</button>)}</div>
+        <div className="bg-gray-800 rounded-xl p-4 max-w-md w-full border-l-4" style={{borderColor:cats[cat].color}}>
+          <p className="text-sm text-gray-300 mb-3">{cats[cat].desc}</p>
+          <div className="text-xs text-gray-500 font-semibold mb-1">Real-world examples:</div>
+          {cats[cat].examples.map((ex,i)=><div key={i} className="flex items-center gap-2 text-sm text-gray-400 py-1"><span style={{color:cats[cat].color}}>▸</span>{ex}</div>)}
+        </div>
+        <div className="flex items-center gap-2 text-xs text-gray-500 bg-gray-800/50 rounded-lg px-4 py-2">
+          <span>Traditional: Human writes <span className="text-red-400">rules</span></span><span className="text-gray-600">→</span>
+          <span>ML: Computer learns <span className="text-green-400">rules from data</span></span>
+        </div>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 3.2 ML Workflow ───
+  if(moduleId==="3.2"){
+    const [activeStep,setActiveStep]=useState(0);
+    const wfSteps=[
+      {icon:"📥",name:"Collect Data",color:"#3B82F6",desc:"Gather raw data from CSV files, databases, APIs, or web scraping"},
+      {icon:"🧹",name:"Clean & Prep",color:"#8B5CF6",desc:"Handle missing values, remove outliers, encode categories, normalize features"},
+      {icon:"✂️",name:"Split Data",color:"#06B6D4",desc:"Divide into training set (80%) and test set (20%) to validate later"},
+      {icon:"🏋️",name:"Train Model",color:"#10B981",desc:"Feed training data to algorithm — it learns patterns and relationships"},
+      {icon:"📊",name:"Evaluate",color:"#F59E0B",desc:"Test on unseen data. Check accuracy, precision, recall, F1 score"},
+      {icon:"🔧",name:"Tune & Deploy",color:"#EC4899",desc:"Adjust hyperparameters, retrain, then deploy to production"}
+    ];
+    const steps=[{t:"The ML Workflow",s:"Every ML project follows this pipeline",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex items-center gap-1 w-full max-w-lg justify-center flex-wrap">
+          {wfSteps.map((s,i)=><React.Fragment key={i}>
+            <button onClick={()=>setActiveStep(i)} className={`flex flex-col items-center p-2 rounded-xl transition-all cursor-pointer ${activeStep===i?'scale-110':'opacity-50 hover:opacity-80'}`}>
+              <div className="text-2xl mb-1">{s.icon}</div>
+              <div className="w-10 h-2 rounded-full transition-all" style={{background:activeStep>=i?s.color:"#374151"}}/>
+              <div className="text-xs mt-1" style={{color:activeStep===i?s.color:"#6B7280"}}>{s.name}</div>
+            </button>
+            {i<5&&<ArrowRight size={12} className={`shrink-0 ${activeStep>i?'text-gray-400':'text-gray-700'}`}/>}
+          </React.Fragment>)}
+        </div>
+        <div className="bg-gray-800 rounded-xl p-4 max-w-md w-full text-center border-l-4" style={{borderColor:wfSteps[activeStep].color}}>
+          <div className="text-2xl mb-2">{wfSteps[activeStep].icon}</div>
+          <div className="text-sm font-semibold text-gray-200 mb-1">Step {activeStep+1}: {wfSteps[activeStep].name}</div>
+          <p className="text-xs text-gray-400">{wfSteps[activeStep].desc}</p>
+        </div>
+        <div className="flex gap-2">{wfSteps.map((_,i)=><button key={i} onClick={()=>setActiveStep(i)} className={`w-2 h-2 rounded-full transition-all ${activeStep===i?'w-5':''}`} style={{background:activeStep>=i?wfSteps[i].color:"#374151"}}/>)}</div>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 3.8 SVM ───
+  if(moduleId==="3.8"){
+    const [margin,setMargin]=useState(1);
+    const classA=[{x:2,y:7},{x:3,y:8},{x:2.5,y:6},{x:1.5,y:7.5},{x:3.5,y:9}];
+    const classB=[{x:7,y:2},{x:8,y:3},{x:7.5,y:1.5},{x:8.5,y:2.5},{x:6.5,y:3}];
+    const steps=[{t:"Support Vector Machine",s:"Find the widest street between two classes",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <svg viewBox="0 0 300 300" className="w-full max-w-sm bg-gray-800/50 rounded-xl">
+          {classA.map((p,i)=><circle key={`a${i}`} cx={(p.x/10)*300} cy={300-(p.y/10)*300} r="8" fill="#3B82F6" opacity="0.8"/>)}
+          {classB.map((p,i)=><circle key={`b${i}`} cx={(p.x/10)*300} cy={300-(p.y/10)*300} r="8" fill="#EF4444" opacity="0.8"/>)}
+          <line x1="0" y1="0" x2="300" y2="300" stroke="#F59E0B" strokeWidth="2"/>
+          <line x1={margin*20} y1="0" x2={300+margin*20} y2="300" stroke="#F59E0B" strokeWidth="1" strokeDasharray="4" opacity="0.5"/>
+          <line x1={-margin*20} y1="0" x2={300-margin*20} y2="300" stroke="#F59E0B" strokeWidth="1" strokeDasharray="4" opacity="0.5"/>
+          <rect x={150-margin*10} y="140" width={margin*20} height="20" rx="4" fill="#F59E0B" opacity="0.1"/>
+          <text x="150" y="154" fill="#F59E0B" fontSize="9" textAnchor="middle">margin</text>
+          {[classA[0],classA[1],classB[0],classB[1]].map((p,i)=><circle key={`sv${i}`} cx={(p.x/10)*300} cy={300-(p.y/10)*300} r="12" fill="none" stroke="white" strokeWidth="2" strokeDasharray="3"/>)}
+        </svg>
+        <div className="text-center"><div className="text-xs text-gray-400 mb-1">Margin Width</div>
+          <input type="range" min="0.5" max="3" step="0.1" value={margin} onChange={e=>setMargin(+e.target.value)} className="w-48"/>
+          <div className="text-xs text-yellow-400">margin = {margin.toFixed(1)}</div>
+        </div>
+        <div className="flex gap-4 text-xs"><span className="flex items-center gap-1"><div className="w-3 h-3 rounded-full bg-blue-500"/>Class A</span><span className="flex items-center gap-1"><div className="w-3 h-3 rounded-full bg-red-500"/>Class B</span><span className="flex items-center gap-1"><div className="w-3 h-3 rounded-full border-2 border-white"/>Support Vectors</span></div>
+        <p className="text-xs text-gray-500 text-center max-w-md">SVM finds the <span className="text-yellow-400">maximum margin</span> hyperplane. The closest points (support vectors) define the boundary.</p>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 5.4 Backpropagation ───
+  if(moduleId==="5.4"){
+    const [dir,setDir]=useState("forward");
+    const layers=[{n:3,c:"#3B82F6"},{n:4,c:"#8B5CF6"},{n:4,c:"#EC4899"},{n:2,c:"#10B981"}];
+    const steps=[{t:"Backpropagation",s:"How neural networks learn from mistakes",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex gap-3 mb-2">{[{k:"forward",l:"▶ Forward Pass",c:"#3B82F6"},{k:"backward",l:"◀ Backward Pass",c:"#EF4444"}].map(b=><button key={b.k} onClick={()=>setDir(b.k)} className={`px-4 py-2 rounded-lg text-sm font-medium ${dir===b.k?'text-white':'bg-gray-700 text-gray-400'}`} style={dir===b.k?{background:b.c}:{}}>{b.l}</button>)}</div>
+        <svg viewBox="0 0 400 200" className="w-full max-w-lg">
+          {layers.map((layer,li)=>{const x=50+li*100;return Array.from({length:layer.n},(_,ni)=>{
+            const y=100-(layer.n-1)*20+ni*40;
+            return(<g key={`${li}-${ni}`}>
+              <circle cx={x} cy={y} r="14" fill={layer.c} opacity="0.8"/>
+              {li<layers.length-1&&Array.from({length:layers[li+1].n},(_,nj)=>{
+                const nx=50+(li+1)*100;const ny=100-(layers[li+1].n-1)*20+nj*40;
+                const isActive=dir==="forward"?true:true;
+                return<line key={`w${li}-${ni}-${nj}`} x1={dir==="forward"?x+14:nx-14} y1={y} x2={dir==="forward"?nx-14:x+14} y2={ny} stroke={dir==="forward"?"#3B82F6":"#EF4444"} strokeWidth="1.5" opacity={isActive?0.3:0.1} markerEnd={`url(#arr${dir})`}/>;
+              })}
+            </g>);
+          });}).flat()}
+          <defs>
+            <marker id="arrforward" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3B82F6"/></marker>
+            <marker id="arrbackward" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M 10 0 L 0 5 L 10 10 z" fill="#EF4444"/></marker>
+          </defs>
+          {["Input","Hidden 1","Hidden 2","Output"].map((n,i)=><text key={i} x={50+i*100} y="195" fill="#888" fontSize="8" textAnchor="middle">{n}</text>)}
+        </svg>
+        <div className="bg-gray-800 rounded-xl p-3 max-w-md w-full">
+          {dir==="forward"?<div className="text-sm text-center"><span className="text-blue-400 font-semibold">Forward:</span> <span className="text-gray-400">Data flows input → output. Each neuron computes weighted sum + activation.</span></div>
+          :<div className="text-sm text-center"><span className="text-red-400 font-semibold">Backward:</span> <span className="text-gray-400">Error flows back. Each weight gets a gradient showing how to reduce the loss.</span></div>}
+        </div>
+        <p className="text-xs text-gray-500">Forward pass makes a prediction → Compare with truth → Backward pass adjusts weights → Repeat!</p>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 5.9 RNNs & LSTM ───
+  if(moduleId==="5.9"){
+    const [timeStep,setTimeStep]=useState(0);
+    const words=["The","stock","price","will","rise"];
+    const hiddenVals=[0.1,0.4,0.7,0.5,0.9];
+    const steps=[{t:"RNNs & LSTM",s:"Neural networks with memory for sequences",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="text-sm text-gray-400 text-center mb-1">RNNs process sequences one step at a time, passing a <span className="text-purple-400">hidden state</span> forward.</div>
+        <svg viewBox="0 0 450 150" className="w-full max-w-lg">
+          {words.map((w,i)=>{const x=40+i*90;const active=i<=timeStep;return(<g key={i} opacity={active?1:0.2}>
+            <rect x={x-25} y="20" width="50" height="30" rx="6" fill="#3B82F6" opacity={i===timeStep?0.9:0.5}/>
+            <text x={x} y="40" fill="white" fontSize="9" textAnchor="middle">{w}</text>
+            <rect x={x-25} y="70" width="50" height="35" rx="8" fill="#8B5CF6" opacity={i===timeStep?0.9:0.5}/>
+            <text x={x} y="85" fill="white" fontSize="7" textAnchor="middle">h={hiddenVals[i].toFixed(1)}</text>
+            <text x={x} y="96" fill="#ddd" fontSize="6" textAnchor="middle">RNN Cell</text>
+            <line x1={x} y1="50" x2={x} y2="70" stroke="#666" strokeWidth="1.5" markerEnd="url(#arrRnn)"/>
+            {i<words.length-1&&active&&<line x1={x+25} y1="87" x2={x+65} y2="87" stroke="#F59E0B" strokeWidth="2" markerEnd="url(#arrRnn)"/>}
+            {i<words.length-1&&active&&<text x={x+45} y="80" fill="#F59E0B" fontSize="7" textAnchor="middle">h→</text>}
+            <rect x={x-25} y="115" width="50" height="22" rx="6" fill="#10B981" opacity={i===timeStep?0.8:0.3}/>
+            <text x={x} y="130" fill="white" fontSize="8" textAnchor="middle">out_{i}</text>
+            <line x1={x} y1="105" x2={x} y2="115" stroke="#666" strokeWidth="1"/>
+          </g>);})}
+          <defs><marker id="arrRnn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#F59E0B"/></marker></defs>
+        </svg>
+        <div className="flex gap-2">{words.map((_,i)=><button key={i} onClick={()=>setTimeStep(i)} className={`px-3 py-1 rounded text-xs ${timeStep===i?'bg-purple-600 text-white':'bg-gray-700 text-gray-400'}`}>t={i}</button>)}</div>
+        <div className="text-xs text-gray-400 text-center">Step {timeStep}: Processing "<span className="text-blue-400">{words[timeStep]}</span>" with hidden state <span className="text-yellow-400">h={hiddenVals[timeStep]}</span></div>
+        <p className="text-xs text-gray-500 text-center max-w-md">LSTM adds <span className="text-purple-400">gates</span> (forget, input, output) to control what to remember and forget — solving the vanishing gradient problem.</p>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 6.1 Text Preprocessing ───
+  if(moduleId==="6.1"){
+    const [stage,setStage]=useState(0);
+    const raw="The Quick Brown Foxes are jumping! over... the lazy Dogs!!!";
+    const stages=[
+      {name:"Raw Text",result:raw,code:'text = "The Quick Brown Foxes..."'},
+      {name:"Lowercase",result:raw.toLowerCase(),code:"text.lower()"},
+      {name:"Remove Punctuation",result:raw.toLowerCase().replace(/[^a-z\s]/g,""),code:'re.sub(r"[^a-z\\s]", "", text)'},
+      {name:"Tokenize",result:raw.toLowerCase().replace(/[^a-z\s]/g,"").split(/\s+/).join(" | "),code:"text.split()"},
+      {name:"Remove Stopwords",result:["quick","brown","foxes","jumping","lazy","dogs"].join(" | "),code:'[w for w in words if w not in stopwords]'},
+      {name:"Stemming",result:["quick","brown","fox","jump","lazi","dog"].join(" | "),code:"[stemmer.stem(w) for w in words]"},
+    ];
+    const steps=[{t:"Text Preprocessing",s:"Cleaning text before feeding it to ML models",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex gap-1 flex-wrap justify-center">{stages.map((s,i)=><button key={i} onClick={()=>setStage(i)} className={`px-2 py-1 rounded text-xs ${stage===i?'bg-blue-600 text-white':stage>i?'bg-green-900/30 text-green-400':'bg-gray-700 text-gray-400'}`}>{i>0?"→ ":""}{s.name}</button>)}</div>
+        <div className="bg-gray-800 rounded-xl p-4 w-full max-w-lg min-h-16">
+          <div className="text-xs text-gray-500 mb-2">Step {stage+1}: {stages[stage].name}</div>
+          <div className="text-sm text-gray-200 font-mono break-words">{stages[stage].result}</div>
+        </div>
+        <div className="bg-gray-900 rounded-lg p-3 font-mono text-xs w-full max-w-lg"><span className="text-purple-400">→</span> {stages[stage].code}</div>
+        <div className="flex gap-1">{stages.map((_,i)=><div key={i} className={`h-1.5 rounded-full transition-all ${i<=stage?'bg-blue-500 w-8':'bg-gray-700 w-4'}`}/>)}</div>
+        <p className="text-xs text-gray-500 text-center max-w-md">Each step reduces noise. "The Quick Brown Foxes!!!" → clean tokens ready for ML.</p>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 6.3 Word Embeddings ───
+  if(moduleId==="6.3"){
+    const words=[{w:"king",x:200,y:60,c:"#F59E0B"},{w:"queen",x:260,y:60,c:"#EC4899"},{w:"man",x:200,y:140,c:"#3B82F6"},{w:"woman",x:260,y:140,c:"#8B5CF6"},{w:"prince",x:230,y:100,c:"#06B6D4"},{w:"cat",x:60,y:180,c:"#10B981"},{w:"dog",x:80,y:210,c:"#10B981"},{w:"fish",x:40,y:220,c:"#10B981"},{w:"car",x:340,y:200,c:"#EF4444"},{w:"bus",x:360,y:220,c:"#EF4444"},{w:"train",x:320,y:210,c:"#EF4444"}];
+    const [sel,setSel]=useState(0);
+    const steps=[{t:"Word Embeddings",s:"Words as vectors — similar meanings = nearby points",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <svg viewBox="0 0 400 260" className="w-full max-w-lg bg-gray-800/50 rounded-xl">
+          <line x1="195" y1="55" x2="195" y2="145" stroke="#F59E0B" strokeWidth="1" strokeDasharray="3" opacity="0.4"/>
+          <line x1="255" y1="55" x2="255" y2="145" stroke="#EC4899" strokeWidth="1" strokeDasharray="3" opacity="0.4"/>
+          <line x1="195" y1="60" x2="255" y2="60" stroke="#666" strokeWidth="1" strokeDasharray="3" opacity="0.3"/>
+          <line x1="195" y1="140" x2="255" y2="140" stroke="#666" strokeWidth="1" strokeDasharray="3" opacity="0.3"/>
+          <text x="230" y="50" fill="#666" fontSize="7" textAnchor="middle">royalty</text>
+          <text x="175" y="105" fill="#666" fontSize="7" textAnchor="end">male</text>
+          <text x="280" y="105" fill="#666" fontSize="7">female</text>
+          <ellipse cx="65" cy="200" rx="45" ry="35" fill="none" stroke="#10B981" strokeWidth="1" strokeDasharray="3" opacity="0.3"/>
+          <text x="65" y="245" fill="#10B981" fontSize="7" textAnchor="middle" opacity="0.5">animals</text>
+          <ellipse cx="340" cy="210" rx="45" ry="30" fill="none" stroke="#EF4444" strokeWidth="1" strokeDasharray="3" opacity="0.3"/>
+          <text x="340" y="248" fill="#EF4444" fontSize="7" textAnchor="middle" opacity="0.5">vehicles</text>
+          {words.map((wd,i)=><g key={i} onClick={()=>setSel(i)} className="cursor-pointer">
+            <circle cx={wd.x} cy={wd.y} r={sel===i?10:6} fill={wd.c} opacity={sel===i?1:0.7} stroke={sel===i?"white":"none"} strokeWidth="2"/>
+            <text x={wd.x} y={wd.y-12} fill={wd.c} fontSize="9" textAnchor="middle" fontWeight={sel===i?"bold":"normal"}>{wd.w}</text>
+          </g>)}
+        </svg>
+        <div className="bg-gray-800 rounded-xl p-3 max-w-md w-full text-center">
+          <div className="font-mono text-xs text-gray-400 mb-1">king - man + woman ≈ <span className="text-pink-400 font-bold">queen</span></div>
+          <div className="text-xs text-gray-500">Embedding dimensions capture meaning. Similar words cluster together in vector space.</div>
+        </div>
+      </div>
+    )}];
+    return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
+  }
+
+  // ─── 7.3 Embeddings & Vector DBs ───
+  if(moduleId==="7.3"){
+    const [query,setQuery]=useState(0);
+    const docs=[{t:"Python loops and iteration",v:[0.9,0.2]},{t:"Machine learning basics",v:[0.3,0.8]},{t:"For loops in JavaScript",v:[0.85,0.15]},{t:"Neural network training",v:[0.2,0.9]},{t:"List comprehension in Python",v:[0.8,0.3]},{t:"Deep learning with PyTorch",v:[0.25,0.85]}];
+    const queries=[{t:"How do Python loops work?",v:[0.88,0.18]},{t:"What is deep learning?",v:[0.22,0.88]}];
+    const cosSim=(a,b)=>{const dot=a[0]*b[0]+a[1]*b[1];const ma=Math.sqrt(a[0]**2+a[1]**2);const mb=Math.sqrt(b[0]**2+b[1]**2);return dot/(ma*mb);};
+    const ranked=[...docs].map(d=>({...d,sim:cosSim(queries[query].v,d.v)})).sort((a,b)=>b.sim-a.sim);
+    const steps=[{t:"Embeddings & Vector Databases",s:"Find similar content using vector similarity",v:()=>(
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex gap-2">{queries.map((q,i)=><button key={i} onClick={()=>setQuery(i)} className={`px-3 py-1.5 rounded-lg text-xs ${query===i?'bg-blue-600 text-white':'bg-gray-700 text-gray-400'}`}>🔍 {q.t}</button>)}</div>
+        <svg viewBox="0 0 300 300" className="w-full max-w-xs bg-gray-800/50 rounded-xl">
+          <line x1="30" y1="270" x2="290" y2="270" stroke="#4B5563" strokeWidth="1"/><line x1="30" y1="270" x2="30" y2="10" stroke="#4B5563" strokeWidth="1"/>
+          <text x="160" y="295" fill="#666" fontSize="8" textAnchor="middle">Programming</text>
+          <text x="10" y="140" fill="#666" fontSize="8" textAnchor="middle" transform="rotate(-90 10 140)">ML/AI</text>
+          {docs.map((d,i)=><g key={i}><circle cx={30+d.v[0]*250} cy={270-d.v[1]*250} r="6" fill="#8B5CF6" opacity="0.7"/><text x={30+d.v[0]*250} y={270-d.v[1]*250-10} fill="#8B5CF6" fontSize="7" textAnchor="middle">{d.t.slice(0,15)}…</text></g>)}
+          <circle cx={30+queries[query].v[0]*250} cy={270-queries[query].v[1]*250} r="8" fill="#F59E0B" stroke="white" strokeWidth="2"/>
+          <text x={30+queries[query].v[0]*250} y={270-queries[query].v[1]*250-14} fill="#F59E0B" fontSize="8" textAnchor="middle" fontWeight="bold">Query</text>
+          {ranked.slice(0,2).map((d,i)=><line key={i} x1={30+queries[query].v[0]*250} y1={270-queries[query].v[1]*250} x2={30+d.v[0]*250} y2={270-d.v[1]*250} stroke="#F59E0B" strokeWidth="1" strokeDasharray="3" opacity="0.5"/>)}
+        </svg>
+        <div className="w-full max-w-md"><div className="text-xs text-gray-500 font-semibold mb-1">Top matches (cosine similarity):</div>
+          {ranked.slice(0,3).map((d,i)=><div key={i} className="flex items-center gap-2 py-1"><div className="w-16 h-1.5 bg-gray-700 rounded-full"><div className="h-full rounded-full bg-green-500 transition-all" style={{width:`${d.sim*100}%`}}/></div><span className="text-xs text-gray-300">{d.t}</span><span className="text-xs text-green-400 font-mono">{d.sim.toFixed(2)}</span></div>)}
+        </div>
       </div>
     )}];
     return <LessonShell steps={steps} step={step} setStep={setStep} anim={anim} onComplete={onComplete}/>;
